@@ -118,7 +118,7 @@ class ToolLLMPlanner(LLMPlanner):
                         result = box.call(name, args)
                     if name == "submit_route":
                         proposal = args.get("route")
-                    calls.append({"tool": name, "ok": not result.get("error") and result.get("accepted", True) is not False
+                    calls.append({"tool": name, "args": {k: v for k, v in args.items() if k != "route"}, "ok": not result.get("error") and result.get("accepted", True) is not False
                                   and result.get("found", True) is not False})
                     messages.append({"role": "tool", "tool_call_id": call["id"], "content": json.dumps(result)[:6000]})
                 if box.submitted is not None:

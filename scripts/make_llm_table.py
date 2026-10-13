@@ -83,7 +83,7 @@ def fmt(table: pd.DataFrame) -> pd.DataFrame:
 PRICES = {"gpt-4o": (2.50, 10.00), "gpt-4o-mini": (0.15, 0.60)}  # USD per 1M input/output tokens, OpenAI standard tier
 
 
-def agent_stats(path: Path, dijkstra: pd.DataFrame) -> dict:
+def agent_stats(path: Path, dijkstra: pd.DataFrame, scenario=None) -> dict:
     """Decision validity, edits, cost, and a paired exact McNemar test of completion against Dijkstra."""
     import json
     from collections import Counter
@@ -95,10 +95,24 @@ def agent_stats(path: Path, dijkstra: pd.DataFrame) -> dict:
     only_dij = int((~s.completion & r.completion.astype(bool)).sum())
     n, k = only_llm + only_dij, min(only_llm, only_dij)
     p = min(1.0, 2 * sum(comb(n, i) for i in range(k + 1)) / 2 ** n) if n else 1.0
-    model = path.name.rsplit("_", 1)[0]
+    model = path.name.split("_")[0]
     tin, tout = sum(x["prompt_tokens"] for x in d), sum(x["completion_tokens"] for x in d)
     price = PRICES.get(model, (float("nan"), float("nan")))
-    return {"Run": path.name, "Decisions": len(d), "Valid (%)": round(100 * sum(x["valid"] for x in d) / len(d), 1),
+    extra = {}
+    if scenario:
+        first = {}
+        for x in d:
+            first.setdefault(x["request_id"], x)
+        sat = {int(k): v["satellite"] for k, v in scenario.items()}
+        extra["First route avoids announced satellite (%)"] = round(
+            100 * sum(sat[r] not in x["route"] for r, x in first.items()) / len(first), 1)
+        invalid = [x for x in d if not x["valid"] and x.get("proposal")]
+        if invalid:
+            extra["Invalid proposals that tried to avoid it (%)"] = round(
+                100 * sum(sat[x["request_id"]] not in x["proposal"] for x in invalid) / len(invalid), 1)
+    if any("tool_calls" in x for x in d):
+        extra["Tool calls per decision"] = round(sum(len(x.get("tool_calls", [])) for x in d) / len(d), 1)
+    return {"Run": path.name, **extra, "Decisions": len(d), "Valid (%)": round(100 * sum(x["valid"] for x in d) / len(d), 1),
             "Changed": sum(x["changed"] for x in d),
             "Top invalid reasons": "; ".join(f"{e} ({c})" for e, c in Counter(x["error"][:40] for x in d if not x["valid"]).most_common(3)),
             "Completed only by LLM / only by Dijkstra": f"{only_llm} / {only_dij}", "McNemar p": f"{p:.4f}",
@@ -111,6 +125,8 @@ def main():
     ap.add_argument("--check-paper", action="store_true")
     ap.add_argument("--llm", nargs="*", type=Path, default=[])
     ap.add_argument("--out", type=Path)
+    ap.add_argument("--baselines", type=Path, help="rerun baselines/PPO-GCN under a scenario (run_constraint_baselines.py)")
+    ap.add_argument("--scenario", type=Path, help="scenario file, for avoidance statistics")
     args = ap.parse_args()
     rows = baseline_rows()
     if args.check_paper:
@@ -118,20 +134,25 @@ def main():
         print(table.to_string())
         return
     ids = {int(r["request_id"]) for r in subset_requests("eval")[1]}
+    if args.baselines:
+        rows = pd.read_csv(args.baselines / "sessions.csv")
+        rows["method"] = rows.method.map(lambda m: NAMES.get(m, m))
     rows = rows[rows.request_id.isin(ids)]
-    full = summarize(baseline_rows()).set_index("Method")["Compl. (%)"]
+    full = None if args.baselines else summarize(baseline_rows()).set_index("Method")["Compl. (%)"]
     for path in args.llm:
         llm = pd.read_csv(path / "sessions.csv")
         rows = pd.concat([rows, llm.assign(method=f"LLM ({path.name})")], ignore_index=True)
     table = summarize(rows)
-    table["Compl. (%), all 3,600"] = table.Method.map(full)
+    if full is not None:
+        table["Compl. (%), all 3,600"] = table.Method.map(full)
     order = ORDER + [m for m in table.Method if m not in ORDER]
     table = table.set_index("Method").loc[order].reset_index()
     text = fmt(table).to_markdown(index=False)
     if args.llm:
-        base = pd.read_csv(ROOT / "results_paper/main_240_metrics/sessions.csv")
+        base = pd.read_csv((args.baselines or ROOT / "results_paper/main_240_metrics") / "sessions.csv")
         dij = base[base.method == "raw"].set_index("request_id")
-        stats = pd.DataFrame([agent_stats(p, dij) for p in args.llm])
+        scenario = __import__("json").loads(args.scenario.read_text()) if args.scenario else None
+        stats = pd.DataFrame([agent_stats(p, dij, scenario) for p in args.llm])
         text += "\n\nLLM decisions\n\n" + stats.to_markdown(index=False)
     print(text)
     if args.out:
