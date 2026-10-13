@@ -14,7 +14,7 @@ from leo_session import SessionRequest  # noqa: E402
 from leo_session.topology import canonical_edge  # noqa: E402
 from llm_routing.planner import LLMPlanner  # noqa: E402
 from llm_routing.route_edit import to_route  # noqa: E402
-from multisession.conditions import satellite_latlon  # noqa: E402
+from llm_routing.regions import satellite_latlon  # noqa: E402
 
 
 def test_subset_is_3_pairs_5_durations_12_times():

@@ -263,7 +263,7 @@ $$
 | `tools.py` | 에이전트 도구(`check_route`, `find_route`, `submit_route`) |
 | `compliance.py` | 세션 동안의 조건 준수 측정 |
 | `formulation.py`, `sandbox.py` | CP-SAT 정식화와 채점기, LLM이 쓴 코드의 격리 실행 |
-| **`multisession/`** | 여러 세션이 터미널을 나눠 쓰는 확장 문제의 모델과 CP-SAT 정식화, 운영 조건(지역 범위) 정의, LLM API 호출 |
+| `regions.py`, `llm.py` | 지역 범위와 위성 위도, 경도 계산, 모든 모델 공통의 OpenAI 호환 API 호출 |
 | **`scripts/`** | **실행 스크립트** |
 | `train_gcn_ppo.py`, `evaluate_gcn_ppo.py` | PPO-GCN 학습과 고정 테스트셋 평가 |
 | `run_cpu_baselines.py`, `build_contact_trace.py` | 기준 방법 실행, 접촉 구간 캐시 생성 |
@@ -273,10 +273,10 @@ $$
 | `make_llm_table.py`, `make_multi_table.py` | 논문 표 II 형식 결과표, 여러 조건 결과표 |
 | `plot_completion_by_holding_time.py` | 유지 시간별 완주율 그림 |
 | `verify_reproduction_bundle.py` | 입력, 체크포인트, 핵심 결과의 재현 검증 |
-| **`tests/`** | 궤도, 토폴로지, 경로, 보상, 세션 시뮬레이터, LLM 경로 검증, CP-SAT 모델, 격리 실행 테스트 |
+| **`tests/`** | 보상, 세션 시뮬레이터, PPO-GCN 경로 보상, LLM 경로 검증, CP-SAT 모델, 격리 실행 테스트 |
 | **`results_paper/`** | 기준 방법의 테스트 3,600개 결과, PAT 설정 지연 민감도, feasibility witness |
 | **`results_ppo_gcn/`** | PPO-GCN 체크포인트(시드 3개, 요소 제거 2개, 5층 비교 모델)와 평가 결과, 통계 검정 |
-| **`results_llm/`** | 조건 시나리오(`scenarios/`), 실행 기록(방법별 폴더), 결과표(`table_*.md`) |
+| **`results_llm/`** | 조건 시나리오, 방법별 실행 기록, 결과표 ([폴더 안내](results_llm/README.md)) |
 | **`docs/`** | 설계, 보상, 평가 지표, 실험 절차, 참고문헌, 재현 방법, LLM 실험 규약 |
 | **`cache/`** | 위성 간 접촉 구간 캐시 |
 
@@ -295,10 +295,19 @@ python3.12 -m venv .venv
 
 LLM 실험 실행에는 `.env`의 `OPENAI_API_KEY` 필요.
 
+## 문서
+
 | 문서 | 내용 |
 |---|---|
-| [`docs/TECHNICAL_OVERVIEW_KO.md`](docs/TECHNICAL_OVERVIEW_KO.md), [`docs/DESIGN.md`](docs/DESIGN.md) | 시뮬레이터와 PPO-GCN 설계 |
-| [`docs/REWARD_DESIGN.md`](docs/REWARD_DESIGN.md), [`docs/EVALUATION_METRICS.md`](docs/EVALUATION_METRICS.md) | 보상 설계, 평가 지표 정의 |
+| [`docs/TECHNICAL_OVERVIEW_KO.md`](docs/TECHNICAL_OVERVIEW_KO.md) | 시뮬레이터와 PPO-GCN 전체 기술 정리 |
+| [`docs/DESIGN.md`](docs/DESIGN.md), [`docs/IMPLEMENTATION_KO.md`](docs/IMPLEMENTATION_KO.md) | 세션 모델 설계와 구현 설명 |
+| [`docs/GCN_PPO.md`](docs/GCN_PPO.md), [`docs/REWARD_DESIGN.md`](docs/REWARD_DESIGN.md) | PPO-GCN 구조와 보상 설계 |
+| [`docs/COST_GREEDY.md`](docs/COST_GREEDY.md) | Cost-Greedy 기준 방법 정의 |
+| [`docs/EVALUATION_METRICS.md`](docs/EVALUATION_METRICS.md) | 평가 지표 정의 |
+| [`docs/EXPERIMENT_PROTOCOL.md`](docs/EXPERIMENT_PROTOCOL.md), [`docs/FROZEN_TEST_EVALUATION_POLICY_KO.md`](docs/FROZEN_TEST_EVALUATION_POLICY_KO.md) | 기준 방법 실험 절차, 고정 테스트셋 평가 원칙 |
+| [`docs/REFERENCES.md`](docs/REFERENCES.md) | 수치 설정과 알고리즘의 참고문헌 |
 | [`docs/REPRODUCE.md`](docs/REPRODUCE.md) | 테스트 3,600개 재현과 PPO-GCN 학습 명령 |
+| [`docs/CHECKPOINT_INDEX.csv`](docs/CHECKPOINT_INDEX.csv), [`docs/ENVIRONMENT_SNAPSHOT.json`](docs/ENVIRONMENT_SNAPSHOT.json) | 체크포인트 목록과 해시, 실행 환경 기록 |
 | [`results_ppo_gcn/priority_evidence_2026-09-04/RESULTS.md`](results_ppo_gcn/priority_evidence_2026-09-04/RESULTS.md) | PPO-GCN 전체 결과와 통계 검정 |
 | [`docs/LLM_ROUTING.md`](docs/LLM_ROUTING.md) | LLM 실험 규약, 조건별 시나리오와 지표, 개발 기록 |
+| [`results_llm/README.md`](results_llm/README.md) | LLM 실험 결과표와 실행 기록 안내 |

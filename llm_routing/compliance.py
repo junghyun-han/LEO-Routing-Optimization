@@ -4,7 +4,7 @@ Each established route is followed from its start to the next route's start
 (the last one to the end of the session), sampled every ``step_s`` seconds.
 Satellite positions come from the v3 constellation, so a satellite that drifts
 into a region during the session counts.  Region boxes are
-``multisession.conditions.REGIONS`` (the same boxes the prompt and the tools use).
+``llm_routing.regions.REGIONS`` (the same boxes the prompt and the tools use).
 """
 from __future__ import annotations
 
@@ -13,7 +13,7 @@ from typing import Dict, List, Optional
 import numpy as np
 
 from leo_session.ground import GROUND_STATIONS
-from multisession.conditions import REGIONS, satellite_latlon
+from llm_routing.regions import REGIONS, satellite_latlon
 
 C_KM_S = 299792.458
 

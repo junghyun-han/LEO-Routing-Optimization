@@ -13,7 +13,7 @@ from typing import Dict, List, Optional, Tuple
 
 from openai import OpenAI
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def _load_dotenv() -> None:

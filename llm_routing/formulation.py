@@ -30,8 +30,8 @@ import time
 from leo_session.ground import GROUND_STATIONS
 from leo_session.routing import RoutePlanner
 from leo_session.topology import canonical_edge
-from multisession.agent.scenarios import KO_REGION
-from multisession.conditions import REGIONS, satellite_latlon
+from llm_routing.regions import KO_REGION
+from llm_routing.regions import REGIONS, satellite_latlon
 
 from .route_edit import to_route
 

@@ -11,10 +11,10 @@ import math
 from typing import Dict, List, Optional, Sequence
 
 from leo_session.topology import canonical_edge
-from multisession.conditions import REGIONS
+from llm_routing.regions import REGIONS
 
 from .compliance import in_region
-from multisession.conditions import satellite_latlon
+from llm_routing.regions import satellite_latlon
 
 from .route_edit import hop_table, risky_links, to_route
 

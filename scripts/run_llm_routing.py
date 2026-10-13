@@ -28,7 +28,7 @@ from leo_session import ContactTrace, GroundContactGenerator, SessionEnvironment
 from leo_session.config import DEFAULT_CONFIG  # noqa: E402
 from leo_session.reward import RewardConfig  # noqa: E402
 from llm_routing.planner import LLMPlanner, QuotaExhausted, ToolLLMPlanner  # noqa: E402
-from multisession.conditions import satellite_latlon  # noqa: E402
+from llm_routing.regions import satellite_latlon  # noqa: E402
 
 REQUESTS = ROOT / "results_paper/paper_artifacts/evaluation_requests.csv"
 
@@ -79,7 +79,7 @@ def main():
     if args.mock:
         model = IdentityModel()
     else:
-        from multisession.agent.llm import ChatModel
+        from llm_routing.llm import ChatModel
         model = ChatModel(args.provider, args.model, max_tokens=1024)
     all_rows, subset = subset_requests(args.split)
     con, env = build_environment(all_rows)

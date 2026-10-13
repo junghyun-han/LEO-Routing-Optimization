@@ -23,8 +23,8 @@ from run_llm_routing import build_environment, subset_requests  # noqa: E402
 from leo_session.topology import canonical_edge  # noqa: E402
 from llm_routing.compliance import in_region  # noqa: E402
 from llm_routing.tools import Toolbox  # noqa: E402
-from multisession.agent.scenarios import KO_REGION  # noqa: E402
-from multisession.conditions import REGIONS, satellite_latlon  # noqa: E402
+from llm_routing.regions import KO_REGION  # noqa: E402
+from llm_routing.regions import REGIONS, satellite_latlon  # noqa: E402
 
 MAINTENANCE_TEXT = [
     "위성 {m}는 시각 {t:.0f}초부터 PAT 장비 정비로 운용이 중단돼.",

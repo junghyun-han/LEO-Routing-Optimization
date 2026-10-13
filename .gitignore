@@ -4,7 +4,6 @@ __pycache__/
 .pytest_cache/
 .DS_Store
 results_cpu/
-results_multisession/*.log
 .env
 results_llm/*.log
 results_llm/scenarios/multi_reference_t0.json

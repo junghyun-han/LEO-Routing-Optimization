@@ -35,8 +35,8 @@ from llm_routing.formulation import DATA_DOC, FormulationPlanner, decision_data,
 from llm_routing.planner import QuotaExhausted, _reraise_quota  # noqa: E402
 from llm_routing.route_edit import to_route  # noqa: E402
 from llm_routing.sandbox import ALLOWED_IMPORTS, run_code  # noqa: E402
-from multisession.agent.scenarios import KO_REGION  # noqa: E402
-from multisession.conditions import REGIONS  # noqa: E402
+from llm_routing.regions import KO_REGION  # noqa: E402
+from llm_routing.regions import REGIONS  # noqa: E402
 
 # Generic CP-SAT usage notes (prompt version 2, docs/LLM_ROUTING.md change log 8): API pitfalls both models hit
 # on the dev requests, and the network size.  They say nothing about how to model this routing problem.
@@ -160,7 +160,7 @@ def main():
     base = env.planner
     model = None
     if not args.reference:
-        from multisession.agent.llm import ChatModel
+        from llm_routing.llm import ChatModel
         model = ChatModel(args.provider, args.model, max_tokens=2048)
     price = {"gpt-4o": (2.5, 10.0), "gpt-4o-mini": (0.15, 0.6)}.get(args.model or "", (0.0, 0.0))
     args.out.mkdir(parents=True, exist_ok=True)
