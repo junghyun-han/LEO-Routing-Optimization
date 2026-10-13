@@ -1,0 +1,17 @@
+{
+  "scope": "balanced 30-request qualitative diagnostic; not paper evidence",
+  "model": "/data/user16/test/LEO_Routing_v3_handover_2026-09-01/project/v3/results_ppo_gcn/priority_evidence_2026-09-04/no_pat_diagnostic_10k/best_seed0.pt",
+  "seed": 0,
+  "requests": 30,
+  "actions": 2386,
+  "setup_successes": 23,
+  "completions": 13,
+  "max_action_failures": 7,
+  "distinct_chosen_satellites": 778,
+  "finite_policy_values": true,
+  "gate_pass": true,
+  "gate_definition": "nonempty actions, at least one setup, not all requests hit 128-action failure, finite policy outputs",
+  "no_rct": false,
+  "no_pat_reward": true,
+  "physical_pat_enabled": true
+}

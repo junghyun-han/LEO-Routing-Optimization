@@ -1,0 +1,21 @@
+{
+  "models": [
+    "/data/user16/test/LEO_Routing_v3_handover_2026-09-01/project/v3/results_ppo_gcn/long_run_2026-09-04/gcn5_h128_v2_exact_route_reward_seed0_1m_mb64_gpu2/best_seed0.pt"
+  ],
+  "request_file": "/data/user16/test/LEO_Routing_v3_handover_2026-09-01/project/v3/results_paper/paper_artifacts/evaluation_requests.csv",
+  "trace": "/data/user16/test/LEO_Routing_v3_handover_2026-09-01/project/v3/cache/contact_trace_1584_24_11.npz",
+  "method": "PPO-GCN",
+  "shared_reward": {
+    "relay_progress_weight": 1.0,
+    "relay_link_weight": 0.05,
+    "relay_lifetime_shortfall_weight": 3.0,
+    "relay_pat_weight": 0.15,
+    "route_success_reward": 5.0,
+    "route_failure_penalty": 5.0,
+    "route_service_reward": 5.0,
+    "route_interruption_penalty": 5.0,
+    "session_completion_reward": 10.0,
+    "session_incomplete_penalty": 5.0,
+    "session_setup_failure_penalty": 10.0
+  }
+}

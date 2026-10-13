@@ -1,0 +1,60 @@
+{
+  "frozen_request_file": "/data/user16/test/LEO_Routing_v3_handover_2026-09-01/project/v3/results_paper/paper_artifacts/evaluation_requests.csv",
+  "frozen_rows": 3600,
+  "durations_s": [
+    20.0,
+    60.0,
+    180.0,
+    300.0,
+    600.0
+  ],
+  "requests_per_duration": {
+    "20": 720,
+    "60": 720,
+    "180": 720,
+    "300": 720,
+    "600": 720
+  },
+  "methods": {
+    "raw": {
+      "rows": 3600,
+      "unique_request_specs": 3600,
+      "exact_frozen_request_match": true
+    },
+    "lifetime": {
+      "rows": 3600,
+      "unique_request_specs": 3600,
+      "exact_frozen_request_match": true
+    },
+    "prp": {
+      "rows": 3600,
+      "unique_request_specs": 3600,
+      "exact_frozen_request_match": true
+    },
+    "remaining": {
+      "rows": 3600,
+      "unique_request_specs": 3600,
+      "exact_frozen_request_match": true
+    },
+    "cost_greedy": {
+      "rows": 3600,
+      "unique_request_specs": 3600,
+      "exact_frozen_request_match": true
+    },
+    "PPO-GCN": {
+      "rows": 3600,
+      "unique_request_specs": 3600,
+      "exact_frozen_request_match": true
+    },
+    "physical_upper": {
+      "rows": 3600,
+      "unique_request_specs": 3600,
+      "exact_frozen_request_match": true
+    }
+  },
+  "source_files": {
+    "baselines_and_upper": "/data/user16/test/LEO_Routing_v3_handover_2026-09-01/project/v3/results_paper/main_240_metrics/sessions.csv",
+    "current_reward_cost_greedy": "/data/user16/test/LEO_Routing_v3_handover_2026-09-01/project/v3/results_paper/cost_greedy_current_reward_frozen3600/sessions.csv",
+    "ppo_gcn_current": "/data/user16/test/LEO_Routing_v3_handover_2026-09-01/project/v3/results_ppo_gcn/priority_evidence_2026-09-04/no_rct_3l_h128_seed0_1m_mb64_gpu2/eval_full_test/sessions.csv"
+  }
+}

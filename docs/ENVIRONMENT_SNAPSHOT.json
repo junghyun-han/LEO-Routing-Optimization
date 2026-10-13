@@ -1,0 +1,48 @@
+{
+  "captured_at": "2026-09-05T17:00:00+09:00",
+  "operating_system": {
+    "distribution": "Ubuntu 24.04.4 LTS",
+    "architecture": "x86_64",
+    "kernel": "7.0.0-30-generic"
+  },
+  "python": {
+    "version": "3.14.7",
+    "distribution": "Anaconda",
+    "compiler": "GCC 14.3.0"
+  },
+  "gpu": {
+    "model": "NVIDIA RTX A6000",
+    "memory_mib": 49140,
+    "driver": "580.173.02",
+    "mandatory_physical_index": 2,
+    "launch_environment": "CUDA_VISIBLE_DEVICES=2",
+    "python_visible_device": "cuda:0"
+  },
+  "pytorch": {
+    "version": "2.13.0+cu130",
+    "cuda_runtime": "13.0",
+    "cudnn": 92000
+  },
+  "packages": {
+    "numpy": "2.5.2",
+    "scipy": "1.18.1",
+    "pandas": "3.0.5",
+    "networkx": "3.6.1",
+    "matplotlib": "3.11.1",
+    "pytest": "9.1.1",
+    "pillow": "12.3.0",
+    "typing_extensions": "4.16.0"
+  },
+  "frozen_inputs": {
+    "contact_trace": {
+      "path": "v3/cache/contact_trace_1584_24_11.npz",
+      "sha256": "e6baf0a0ad85a17533e2a0b06ed3ec959b85ad10152069377c7de92cf3df1637",
+      "intervals": 14256
+    },
+    "evaluation_requests": {
+      "path": "v3/results_paper/paper_artifacts/evaluation_requests.csv",
+      "sha256": "acf51a3b3de8313a8f729e6f9188f71d34784f5e853fc3814bd4639d853951d4",
+      "requests": 3600
+    }
+  }
+}

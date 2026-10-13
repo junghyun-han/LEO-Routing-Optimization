@@ -1,0 +1,24 @@
+method,method_label,reason,count
+raw,Raw Dijkstra,completed,1841
+raw,Raw Dijkstra,completed with interruption,823
+raw,Raw Dijkstra,initial route setup failed,500
+raw,Raw Dijkstra,replacement setup failed,436
+lifetime,Lifetime,completed,3007
+lifetime,Lifetime,completed with interruption,593
+prp,PRP,completed,2606
+prp,PRP,completed with interruption,537
+prp,PRP,replacement setup failed,457
+remaining,ISASR/Remaining,completed,2956
+remaining,ISASR/Remaining,completed with interruption,615
+remaining,ISASR/Remaining,initial route setup failed,20
+remaining,ISASR/Remaining,replacement setup failed,9
+cost_greedy,Current-reward Cost-Greedy,completed,2903
+cost_greedy,Current-reward Cost-Greedy,completed with interruption,76
+cost_greedy,Current-reward Cost-Greedy,no replacement route,221
+cost_greedy,Current-reward Cost-Greedy,no route at request time,396
+cost_greedy,Current-reward Cost-Greedy,route expired without replacement,4
+PPO-GCN,PPO-GCN 5L/128 1M steps,completed,3237
+PPO-GCN,PPO-GCN 5L/128 1M steps,completed with interruption,248
+PPO-GCN,PPO-GCN 5L/128 1M steps,no replacement route,91
+PPO-GCN,PPO-GCN 5L/128 1M steps,no route at request time,24
+physical_upper,Relaxed physical upper bound,relaxed physical upper bound completed,3600

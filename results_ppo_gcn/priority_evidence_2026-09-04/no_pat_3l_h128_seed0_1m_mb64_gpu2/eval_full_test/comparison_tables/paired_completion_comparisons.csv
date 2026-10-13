@@ -1,0 +1,7 @@
+comparison,both_complete,ppo_only_complete,other_only_complete,neither_complete,paired_completion_delta_pp,exact_mcnemar_two_sided_p
+PPO-GCN vs Raw Dijkstra,1687,1324,154,435,32.5,3.0481507606968025e-232
+PPO-GCN vs Lifetime,2635,376,372,217,0.1111111111111111,0.9126641403802047
+PPO-GCN vs PRP,2390,621,216,373,11.25,3.8999938166392086e-46
+PPO-GCN vs ISASR/Remaining,2565,446,391,198,1.5277777777777777,0.061905064245826015
+PPO-GCN vs Current-reward Cost-Greedy,2445,566,458,131,3.0,0.0008182946939105032
+PPO-GCN vs Relaxed physical upper bound,3011,0,589,0,-16.36111111111111,9.871031767461413e-178

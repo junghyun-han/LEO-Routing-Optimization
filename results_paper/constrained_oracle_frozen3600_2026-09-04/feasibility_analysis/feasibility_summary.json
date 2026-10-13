@@ -1,0 +1,49 @@
+{
+  "frozen_requests": 3600,
+  "oracle_completed_witnesses": 3600,
+  "union_completed_witnesses": 3600,
+  "feasibility_rate_lower_bound": 1.0,
+  "unknown_not_proven_infeasible": 0,
+  "binary_feasibility_rate_exact": 1.0,
+  "all_requests_feasible_certified": true,
+  "infeasible_requests_certified": 0,
+  "interpretation": "Every frozen request has a physically constrained completion witness.",
+  "relaxed_physical_upper_excluded_from_witnesses": true,
+  "source_verification": {
+    "constrained_oracle:constrained_oracle": {
+      "rows": 3600,
+      "unique": 3600,
+      "exact_frozen_match": true
+    },
+    "baselines:lifetime": {
+      "rows": 3600,
+      "unique": 3600,
+      "exact_frozen_match": true
+    },
+    "baselines:prp": {
+      "rows": 3600,
+      "unique": 3600,
+      "exact_frozen_match": true
+    },
+    "baselines:raw": {
+      "rows": 3600,
+      "unique": 3600,
+      "exact_frozen_match": true
+    },
+    "baselines:remaining": {
+      "rows": 3600,
+      "unique": 3600,
+      "exact_frozen_match": true
+    },
+    "cost_greedy:cost_greedy": {
+      "rows": 3600,
+      "unique": 3600,
+      "exact_frozen_match": true
+    },
+    "ppo_gcn:PPO-GCN": {
+      "rows": 3600,
+      "unique": 3600,
+      "exact_frozen_match": true
+    }
+  }
+}

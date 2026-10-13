@@ -1,0 +1,180 @@
+{
+  "created_utc": "2026-09-01T08:22:53.339008+00:00",
+  "trace": "/Users/baghyeontae/Downloads/LEO-Routing-GCN-PPO/v3/cache/contact_trace_1584_24_11.npz",
+  "methods": [
+    "prp"
+  ],
+  "pairs": {
+    "short": [
+      "new_york",
+      "london"
+    ],
+    "medium": [
+      "new_york",
+      "istanbul"
+    ],
+    "long": [
+      "new_york",
+      "hanoi"
+    ]
+  },
+  "durations_s": [
+    20.0,
+    60.0,
+    180.0,
+    300.0,
+    600.0
+  ],
+  "request_count": 3600,
+  "sessions_per_pair_duration": 240,
+  "request_time_rule": "exact rows from /Users/baghyeontae/Downloads/LEO-Routing-GCN-PPO/v3/results_paper/paper_artifacts/evaluation_requests.csv",
+  "orbit_period_s": 5738.992815014798,
+  "setup_delay_s": 20.0,
+  "gsl_range_km": 1000.0,
+  "shared_reward": {
+    "relay_progress_weight": 1.0,
+    "relay_lifetime_shortfall_weight": 3.0,
+    "relay_pat_weight": 0.15,
+    "epsilon": 0.1,
+    "setup_delay_weight": 1.0,
+    "interruption_weight": 1.0,
+    "reconfiguration_weight": 1.0,
+    "path_weight": 1.0
+  },
+  "max_relay_actions": 128,
+  "parameter_manifest": {
+    "total_satellites": {
+      "value": 1584,
+      "unit": "satellites",
+      "category": "REFERENCE_FIXED",
+      "reference": "BHATTACHARJEE_2024",
+      "rationale": "Reference Starlink Phase-I version-2 simulation scale."
+    },
+    "orbital_planes": {
+      "value": 24,
+      "unit": "planes",
+      "category": "REFERENCE_FIXED",
+      "reference": "BHATTACHARJEE_2024",
+      "rationale": "Reference simulation constellation."
+    },
+    "satellites_per_plane": {
+      "value": 66,
+      "unit": "satellites/plane",
+      "category": "REFERENCE_FIXED",
+      "reference": "BHATTACHARJEE_2024",
+      "rationale": "Reference simulation constellation."
+    },
+    "walker_phasing": {
+      "value": 11,
+      "unit": "dimensionless",
+      "category": "REFERENCE_FIXED",
+      "reference": "YANG_2024",
+      "rationale": "Completes the Walker T/P/F definition missing from Table III."
+    },
+    "altitude_km": {
+      "value": 550.0,
+      "unit": "km",
+      "category": "REFERENCE_FIXED",
+      "reference": "BHATTACHARJEE_2024",
+      "rationale": "Circular reference orbit altitude."
+    },
+    "inclination_deg": {
+      "value": 53.0,
+      "unit": "degree",
+      "category": "REFERENCE_FIXED",
+      "reference": "BHATTACHARJEE_2024",
+      "rationale": "Reference orbit inclination."
+    },
+    "lisl_range_km": {
+      "value": 1500.0,
+      "unit": "km",
+      "category": "REFERENCE_FIXED",
+      "reference": "BHATTACHARJEE_2024",
+      "rationale": "Reference simulation range, not a claimed Starlink hardware limit."
+    },
+    "gsl_range_km": {
+      "value": 1000.0,
+      "unit": "km",
+      "category": "REFERENCE_FIXED",
+      "reference": "BHATTACHARJEE_2024",
+      "rationale": "Reference simulation GS range in Table III, not a hardware claim."
+    },
+    "earth_radius_km": {
+      "value": 6378.137,
+      "unit": "km",
+      "category": "REFERENCE_FIXED",
+      "reference": "WGS84",
+      "rationale": "Spherical Earth approximation uses the WGS-84 semi-major axis."
+    },
+    "earth_mu_km3_s2": {
+      "value": 398600.4418,
+      "unit": "km^3/s^2",
+      "category": "REFERENCE_FIXED",
+      "reference": "WGS84",
+      "rationale": "WGS-84 geocentric gravitational constant."
+    },
+    "speed_of_light_km_s": {
+      "value": 299792.458,
+      "unit": "km/s",
+      "category": "REFERENCE_FIXED",
+      "reference": "SI_2019",
+      "rationale": "Exact SI defining constant converted to km/s."
+    },
+    "dynamic_setup_s": {
+      "value": 20.0,
+      "unit": "s",
+      "category": "MODEL_ASSUMPTION",
+      "reference": "SMUTNY_2009",
+      "rationale": "Conservative deterministic approximation from a reported <20 s full establishment."
+    },
+    "persistent_terminals": {
+      "value": 2,
+      "unit": "terminals/satellite",
+      "category": "MODEL_ASSUMPTION",
+      "reference": null,
+      "rationale": "Professor-suggested model: forward/backward intra-plane links."
+    },
+    "dynamic_terminals": {
+      "value": 1,
+      "unit": "terminal/satellite",
+      "category": "MODEL_ASSUMPTION",
+      "reference": null,
+      "rationale": "Professor-suggested model for PAT-sensitive reconfiguration."
+    },
+    "prp_target_probability": {
+      "value": 0.9,
+      "unit": "probability",
+      "category": "REFERENCE_FIXED",
+      "reference": "UZUNALIOGLU_2000",
+      "rationale": "Empirical PRP setting discussed in the original evaluation."
+    },
+    "prp_route_hold_s": {
+      "value": 180.0,
+      "unit": "s",
+      "category": "REFERENCE_FIXED",
+      "reference": "UZUNALIOGLU_2000",
+      "rationale": "Published p=0.9 example: the route-usage CDF reaches 0.9 at 3 min."
+    },
+    "contact_scan_step_s": {
+      "value": 5.0,
+      "unit": "s",
+      "category": "NUMERICAL_PARAMETER",
+      "reference": null,
+      "rationale": "Only brackets contact transitions; roots are refined continuously and convergence is tested."
+    },
+    "root_tolerance_s": {
+      "value": 1e-06,
+      "unit": "s",
+      "category": "NUMERICAL_PARAMETER",
+      "reference": null,
+      "rationale": "Numerical root tolerance, verified by convergence tests."
+    },
+    "oracle_sample_step_s": {
+      "value": 5.0,
+      "unit": "s",
+      "category": "NUMERICAL_PARAMETER",
+      "reference": null,
+      "rationale": "Sampling interval for the deliberately relaxed physical upper bound."
+    }
+  }
+}

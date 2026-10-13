@@ -1,0 +1,103 @@
+{
+  "device": "cuda:0",
+  "trace": "/data/user16/test/LEO_Routing_v3_handover_2026-09-01/project/v3/cache/contact_trace_1584_24_11.npz",
+  "seeds": [
+    1,
+    2
+  ],
+  "ppo_config": {
+    "architecture": "gcn",
+    "hidden_dim": 128,
+    "gcn_layers": 3,
+    "learning_rate": 0.003,
+    "gamma": 0.99,
+    "gae_lambda": 0.95,
+    "clip_ratio": 0.2,
+    "value_coefficient": 0.5,
+    "entropy_coefficient": 0.01,
+    "value_clip": 1.0,
+    "max_grad_norm": 0.5,
+    "update_epochs": 4,
+    "minibatch_size": 64,
+    "rollout_steps": 1024,
+    "target_kl": 0.03,
+    "route_history": false,
+    "current_route_state": true
+  },
+  "training_config": {
+    "total_relay_steps": 1000000,
+    "durations_s": [
+      20.0,
+      60.0,
+      180.0,
+      300.0,
+      600.0
+    ],
+    "snapshot_interval_updates": 45,
+    "checkpoint_interval_updates": 1000000,
+    "validation_offsets": 0
+  },
+  "include_remaining_contact": true,
+  "pat_reward_enabled": true,
+  "ablation": "none",
+  "shared_reward": {
+    "relay_progress_weight": 1.0,
+    "relay_link_weight": 0.05,
+    "relay_lifetime_shortfall_weight": 3.0,
+    "relay_pat_weight": 0.15,
+    "route_success_reward": 5.0,
+    "route_failure_penalty": 5.0,
+    "route_service_reward": 5.0,
+    "route_interruption_penalty": 5.0,
+    "session_completion_reward": 10.0,
+    "session_incomplete_penalty": 5.0,
+    "session_setup_failure_penalty": 10.0
+  },
+  "route_progress_boundary_correction": false,
+  "summaries": [
+    {
+      "seed": 1,
+      "relay_steps": 1000110,
+      "episodes": 18053,
+      "updates": 919,
+      "best_validation_completion": -1.0,
+      "model": "/data/user16/test/LEO_Routing_v3_handover_2026-09-01/project/v3/results_ppo_gcn/priority_evidence_2026-09-04/main_3l_h128_seeds1_2_1m_mb64_gpu2/best_seed1.pt",
+      "curve": "/data/user16/test/LEO_Routing_v3_handover_2026-09-01/project/v3/results_ppo_gcn/priority_evidence_2026-09-04/main_3l_h128_seeds1_2_1m_mb64_gpu2/training_seed1.csv",
+      "training_config": {
+        "total_relay_steps": 1000000,
+        "durations_s": [
+          20.0,
+          60.0,
+          180.0,
+          300.0,
+          600.0
+        ],
+        "snapshot_interval_updates": 45,
+        "checkpoint_interval_updates": 1000000,
+        "validation_offsets": 0
+      }
+    },
+    {
+      "seed": 2,
+      "relay_steps": 1000102,
+      "episodes": 16610,
+      "updates": 921,
+      "best_validation_completion": -1.0,
+      "model": "/data/user16/test/LEO_Routing_v3_handover_2026-09-01/project/v3/results_ppo_gcn/priority_evidence_2026-09-04/main_3l_h128_seeds1_2_1m_mb64_gpu2/best_seed2.pt",
+      "curve": "/data/user16/test/LEO_Routing_v3_handover_2026-09-01/project/v3/results_ppo_gcn/priority_evidence_2026-09-04/main_3l_h128_seeds1_2_1m_mb64_gpu2/training_seed2.csv",
+      "training_config": {
+        "total_relay_steps": 1000000,
+        "durations_s": [
+          20.0,
+          60.0,
+          180.0,
+          300.0,
+          600.0
+        ],
+        "snapshot_interval_updates": 45,
+        "checkpoint_interval_updates": 1000000,
+        "validation_offsets": 0
+      }
+    }
+  ]
+}
