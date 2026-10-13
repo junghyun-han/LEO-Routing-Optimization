@@ -1,0 +1,22 @@
+Multi-constraint requests: 20 (region 15, delay 15, new links 15; every request also asks for links lasting the session). Reference optimum at t0 (CP-SAT, 60 s): {'OPTIMAL': 39, 'FEASIBLE': 1}. PPO-GCN rows pool 3 seeds.
+
+| Method                                           |   n |   Compl. (%) |   All conditions at t0 (%) |   Optimal at t0 (%) |   Region violation (%) |   Delay over bound (%) |   Budget violation (%) |   Mean delay (ms) |   New ISLs |
+|:-------------------------------------------------|----:|-------------:|---------------------------:|--------------------:|-----------------------:|-----------------------:|-----------------------:|------------------:|-----------:|
+| Dijkstra                                         |  20 |         65   |                          0 |                   0 |                  100   |                   21.3 |                   80   |              45.6 |        9   |
+| PRP                                              |  20 |         75   |                          0 |                   0 |                  100   |                   27.1 |                   80   |              48   |        8.8 |
+| Cost-Greedy                                      |  20 |         80   |                          5 |                   0 |                  100   |                   69.7 |                   13.3 |              90.6 |        1.1 |
+| Adapted ISASR                                    |  20 |         80   |                          0 |                   0 |                  100   |                   31.8 |                   73.3 |              49   |        4.7 |
+| Lifetime                                         |  20 |         80   |                          0 |                   0 |                  100   |                   30.6 |                   80   |              49.5 |        7.3 |
+| PPO-GCN                                          |  60 |         98.3 |                          0 |                   0 |                  100   |                   67.8 |                   93.3 |              62.2 |       10.6 |
+| Reference CP-SAT (author, true conditions)       |  20 |         85   |                         95 |                  85 |                    6.7 |                    8.5 |                   20   |              67.5 |        7.2 |
+| Route editing, GPT-4o mini + tools               |  20 |         80   |                         15 |                   5 |                   60   |                   47.2 |                   53.3 |              63.5 |        7.7 |
+| LLM writes the CP-SAT model, GPT-4o              |  20 |         65   |                          0 |                   0 |                  100   |                   21.3 |                   80   |              45.6 |        9   |
+| LLM fills the verified CP-SAT model, GPT-4o      |  20 |         85   |                        100 |                  90 |                    0   |                    5.5 |                   20   |              66.9 |        6.8 |
+| LLM fills the verified CP-SAT model, GPT-4o mini |  20 |         85   |                         95 |                  80 |                    0   |                    8   |                   26.7 |              68.2 |        6.6 |
+
+| Run                                              |   Sessions |   Valid decisions (%) |   Cost (USD) |   Code accepted (%) |   Answers per session |   Uses CP-SAT (%) |   Conditions read correctly (%) |
+|:-------------------------------------------------|-----------:|----------------------:|-------------:|--------------------:|----------------------:|------------------:|--------------------------------:|
+| Route editing, GPT-4o mini + tools               |         20 |                 55.17 |         0.19 |                 nan |                   nan |               nan |                             nan |
+| LLM writes the CP-SAT model, GPT-4o              |         20 |                nan    |         0.84 |                   0 |                     3 |                95 |                             nan |
+| LLM fills the verified CP-SAT model, GPT-4o      |         20 |                nan    |         0.02 |                 nan |                   nan |               nan |                             100 |
+| LLM fills the verified CP-SAT model, GPT-4o mini |         20 |                nan    |         0    |                 nan |                   nan |               nan |                             100 |

@@ -5,3 +5,6 @@ pytest==9.1.1
 pandas==3.0.5
 matplotlib==3.11.1
 torch==2.13.0
+ortools==9.15.6755
+openai==3.29.0
+tabulate==0.10.0

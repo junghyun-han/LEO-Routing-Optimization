@@ -1,0 +1,100 @@
+{
+ "0": {
+  "avoid_region": "north_atlantic",
+  "max_delay_ms": 80.0,
+  "text": "세션이 끝날 때까지 끊기지 않는 링크만 써 줘. 북대서양 상공은 규제 때문에 통과 금지야. 단방향 지연은 80 ms 이하여야 해.",
+  "reference_hops_t0": 22,
+  "conditions": [
+   "avoid",
+   "delay",
+   "lifetime"
+  ],
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10."
+ },
+ "80": {
+  "max_delay_ms": 30.0,
+  "max_new_links": 1,
+  "text": "세션이 끝날 때까지 끊기지 않는 링크만 써 줘. 단방향 지연은 30 ms 이하여야 해. PAT 재지향(새 링크 설정)은 이 세션에서 1번까지만.",
+  "reference_hops_t0": 8,
+  "conditions": [
+   "budget",
+   "delay",
+   "lifetime"
+  ]
+ },
+ "160": {
+  "avoid_region": "north_atlantic",
+  "max_new_links": 1,
+  "text": "세션이 끝날 때까지 끊기지 않는 링크만 써 줘. 북대서양 상공은 규제 때문에 통과 금지야. PAT 재지향(새 링크 설정)은 이 세션에서 1번까지만.",
+  "reference_hops_t0": 27,
+  "conditions": [
+   "avoid",
+   "budget",
+   "lifetime"
+  ],
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10."
+ },
+ "240": {
+  "avoid_region": "north_atlantic",
+  "max_delay_ms": 80.0,
+  "max_new_links": 4,
+  "text": "세션이 끝날 때까지 끊기지 않는 링크만 써 줘. 북대서양 상공은 규제 때문에 통과 금지야. 단방향 지연은 80 ms 이하여야 해. PAT 재지향(새 링크 설정)은 이 세션에서 4번까지만.",
+  "reference_hops_t0": 23,
+  "conditions": [
+   "avoid",
+   "budget",
+   "delay",
+   "lifetime"
+  ],
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10."
+ },
+ "320": {
+  "avoid_region": "north_atlantic",
+  "max_delay_ms": 80.0,
+  "text": "세션이 끝날 때까지 끊기지 않는 링크만 써 줘. 북대서양 상공은 규제 때문에 통과 금지야. 단방향 지연은 80 ms 이하여야 해.",
+  "reference_hops_t0": 23,
+  "conditions": [
+   "avoid",
+   "delay",
+   "lifetime"
+  ],
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10."
+ },
+ "400": {
+  "max_delay_ms": 30.0,
+  "max_new_links": 1,
+  "text": "세션이 끝날 때까지 끊기지 않는 링크만 써 줘. 단방향 지연은 30 ms 이하여야 해. PAT 재지향(새 링크 설정)은 이 세션에서 1번까지만.",
+  "reference_hops_t0": 8,
+  "conditions": [
+   "budget",
+   "delay",
+   "lifetime"
+  ]
+ },
+ "480": {
+  "avoid_region": "north_atlantic",
+  "max_new_links": 1,
+  "text": "세션이 끝날 때까지 끊기지 않는 링크만 써 줘. 북대서양 상공은 규제 때문에 통과 금지야. PAT 재지향(새 링크 설정)은 이 세션에서 1번까지만.",
+  "reference_hops_t0": 46,
+  "conditions": [
+   "avoid",
+   "budget",
+   "lifetime"
+  ],
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10."
+ },
+ "560": {
+  "avoid_region": "north_atlantic",
+  "max_delay_ms": 90.0,
+  "max_new_links": 6,
+  "text": "세션이 끝날 때까지 끊기지 않는 링크만 써 줘. 북대서양 상공은 규제 때문에 통과 금지야. 단방향 지연은 90 ms 이하여야 해. PAT 재지향(새 링크 설정)은 이 세션에서 6번까지만.",
+  "reference_hops_t0": 28,
+  "conditions": [
+   "avoid",
+   "budget",
+   "delay",
+   "lifetime"
+  ],
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10."
+ }
+}

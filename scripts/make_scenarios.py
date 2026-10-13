@@ -173,7 +173,7 @@ MULTI_TEXT = {
 
 
 def multi(split: str) -> dict:
-    """Several conditions at once, made satisfiable at the request time (docs/LLM_ROUTING.md, section 12).
+    """Several conditions at once, made satisfiable at the request time (docs/LLM_ROUTING.md, section 15).
 
     Every 4th request of the subset, 40 (eval) or 8 (dev).  Always: links must last the session.  Then 2-3 of {forbidden region (if the
     request has one), delay bound = 1.15 x the shortest-distance route meeting the
