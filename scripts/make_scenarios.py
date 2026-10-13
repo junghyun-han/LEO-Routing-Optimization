@@ -89,17 +89,87 @@ def hotspot(split: str) -> dict:
         graph = env.planner._graph(t0, topo)
         box = Toolbox(env.planner, graph, spec["source"], spec["destination"], t0, x, {canonical_edge(*e) for e in topo.dynamic})
         out[spec["request_id"]] = {"hotspot_region": r, "note": region_note(r),
-                                   "avoidable_whole_session": bool(box.find_route([], None, "fewest_hops", [r]).get("found")),
+                                   "avoidable_whole_session": bool(box.find_route(objective="fewest_hops", avoid_regions=[r]).get("found")),
                                    "text": HOTSPOT_TEXT[i % len(HOTSPOT_TEXT)].format(r=KO_REGION[r])}
+    return out
+
+
+AVOID_TEXT = [
+    "규제 때문에 {r} 상공으로는 절대 보내면 안 돼.",
+    "데이터 주권 정책상 {r} 위로는 이 세션 트래픽이 지나가면 안 돼.",
+    "보안 정책: {r} 상공 통과 금지.",
+]
+BUDGET_TEXT = [
+    "이 세션에서 PAT 재지향(새 링크 설정)은 총 {k}번까지만 허용돼.",
+    "광 터미널 재지향 작업 여유가 없어. 이 세션은 새 링크를 {k}개까지만 켜.",
+    "운용 지침: 이 세션의 새 링크 설정은 최대 {k}회.",
+]
+LATENCY_TEXT = [
+    "이 세션은 지연에 민감해. 단방향 지연을 {L:.0f} ms 이하로 유지해 줘.",
+    "실시간 서비스라서 종단 간 지연이 {L:.0f} ms를 넘으면 안 돼.",
+    "QoS 조건: 단방향 지연 {L:.0f} ms 이하.",
+]
+
+
+def _requests_with_tools(split):
+    all_rows, subset = subset_requests(split)
+    con, env = build_environment(all_rows)
+    for i, spec in enumerate(subset):
+        t0, x = float(spec["request_time_s"]), float(spec["duration_s"])
+        topo = env._initial_topology(t0)
+        route = env.planner.plan("raw", spec["source"], spec["destination"], t0, x, topo)
+        if route is None:
+            continue
+        box = Toolbox(env.planner, env.planner._graph(t0, topo), spec["source"], spec["destination"], t0, x,
+                      {canonical_edge(*e) for e in topo.dynamic})
+        yield i, spec, con, t0, x, route, box
+
+
+def avoid(split: str) -> dict:
+    """Hard: the region Dijkstra's relays cross most among those avoidable for the whole session."""
+    out = {}
+    for i, spec, con, t0, x, route, box in _requests_with_tools(split):
+        ll = satellite_latlon(con, t0)
+        relays = list(route.satellites[1:-1])
+        for r in sorted(REGIONS, key=lambda r: -len(in_region(ll, relays, r))):
+            if not in_region(ll, relays, r):
+                break
+            if box.find_route(objective="fewest_hops", avoid_regions=[r]).get("found"):
+                out[spec["request_id"]] = {"avoid_region": r, "note": region_note(r),
+                                           "text": AVOID_TEXT[i % len(AVOID_TEXT)].format(r=KO_REGION[r])}
+                break
+    return out
+
+
+def budget(split: str) -> dict:
+    """At most k new links over the session: k = fewest new links of a route lasting X at t0, plus one."""
+    out = {}
+    for i, spec, con, t0, x, route, box in _requests_with_tools(split):
+        f = box.find_route(objective="fewest_new_links", min_remaining_s=x) or {}
+        if not f.get("found"):
+            f = box.find_route(objective="fewest_new_links")
+        k = int(f["new_links"]) + 1
+        out[spec["request_id"]] = {"max_new_links": k, "text": BUDGET_TEXT[i % len(BUDGET_TEXT)].format(k=k)}
+    return out
+
+
+def latency(split: str) -> dict:
+    """One-way delay bound: 1.15 x the shortest-distance route at t0, rounded up to 5 ms."""
+    import math
+    out = {}
+    for i, spec, con, t0, x, route, box in _requests_with_tools(split):
+        f = box.find_route(objective="shortest_distance")
+        bound = 5.0 * math.ceil(f["delay_ms_now"] * 1.15 / 5.0)
+        out[spec["request_id"]] = {"max_delay_ms": bound, "text": LATENCY_TEXT[i % len(LATENCY_TEXT)].format(L=bound)}
     return out
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("kind", choices=["maintenance", "hotspot"])
+    ap.add_argument("kind", choices=["maintenance", "hotspot", "avoid", "budget", "latency"])
     ap.add_argument("--split", choices=["eval", "dev"], default="eval")
     args = ap.parse_args()
-    data = {"maintenance": maintenance, "hotspot": hotspot}[args.kind](args.split)
+    data = {"maintenance": maintenance, "hotspot": hotspot, "avoid": avoid, "budget": budget, "latency": latency}[args.kind](args.split)
     path = ROOT / "results_llm/scenarios" / f"{args.kind}{'' if args.split == 'eval' else '_dev'}.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=1))

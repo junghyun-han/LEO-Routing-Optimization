@@ -27,7 +27,7 @@ import numpy as np  # noqa: E402
 from leo_session import ContactTrace, GroundContactGenerator, SessionEnvironment, SessionRequest, WalkerDeltaConstellation  # noqa: E402
 from leo_session.config import DEFAULT_CONFIG  # noqa: E402
 from leo_session.reward import RewardConfig  # noqa: E402
-from llm_routing.planner import LLMPlanner, ToolLLMPlanner  # noqa: E402
+from llm_routing.planner import LLMPlanner, QuotaExhausted, ToolLLMPlanner  # noqa: E402
 from multisession.conditions import satellite_latlon  # noqa: E402
 
 REQUESTS = ROOT / "results_paper/paper_artifacts/evaluation_requests.csv"
@@ -66,6 +66,8 @@ def main():
     ap.add_argument("--operator-text", default="")
     ap.add_argument("--scenario", type=Path, help="per-request outages and operator text (scripts/make_scenarios.py)")
     ap.add_argument("--hops", type=int, default=1)
+    ap.add_argument("--latlon-with-text", action="store_true", help="old rule (maintenance runs): lat/lon whenever there is operator text")
+    ap.add_argument("--max-usd", type=float, default=None, help="stop (marked INCOMPLETE) once the logged spend exceeds this")
     ap.add_argument("--tools", action="store_true", help="give the model the Python tools (condition 3)")
     ap.add_argument("--split", choices=["eval", "dev"], default="eval")
     ap.add_argument("--limit", type=int)
@@ -84,16 +86,29 @@ def main():
     args.out.mkdir(parents=True, exist_ok=True)
     scenario = json.loads(args.scenario.read_text()) if args.scenario else {}
     rows, route_logs = [], []
+    price = {"gpt-4o": (2.5, 10.0), "gpt-4o-mini": (0.15, 0.6)}.get(args.model or "", (0.0, 0.0))
+    incomplete = None
     for spec in subset[:: args.every][: args.limit]:
+        spent = sum(d.get("prompt_tokens", 0) * price[0] + d.get("completion_tokens", 0) * price[1] for d in planner.decisions) / 1e6
+        if args.max_usd is not None and spent > args.max_usd:
+            incomplete = f"cost cap ${args.max_usd} reached after {len(rows)} requests"
+            break
         planner.request_id = int(spec["request_id"])
         entry = scenario.get(str(spec["request_id"]), {})
         env.set_outages({int(k): float(v) for k, v in entry.get("outages", {}).items()})
         env.route_log = []
         planner.session_new_links = 0
         planner.extra_note = entry.get("note", "")
+        # lat/lon: maintenance (run before this rule) used it whenever there was operator text;
+        # from the avoid-region constraint on, only scenarios that give a region box get it.
+        planner.with_latlon = bool(entry.get("note")) or (bool(planner.operator_text) and args.latlon_with_text)
         planner.operator_text = entry.get("text", args.operator_text)
         request = SessionRequest(spec["source"], spec["destination"], float(spec["request_time_s"]), float(spec["duration_s"]))
-        result = env.run("llm", request)
+        try:
+            result = env.run("llm", request)
+        except QuotaExhausted as exc:
+            incomplete = f"API credit exhausted after {len(rows)} requests: {exc}"
+            break
         row = asdict(result)
         row.update(request_id=int(spec["request_id"]), pair=spec["pair"], source=spec["source"],
                    destination=spec["destination"], request_time_s=float(spec["request_time_s"]),
@@ -103,19 +118,23 @@ def main():
         route_logs.append({"request_id": row["request_id"], "source": row["source"], "destination": row["destination"],
                            "established_time_s": row["established_time_s"], "duration_s": row["duration_s"],
                            "dynamic_setups": row["dynamic_setups"], "routes": env.route_log})
-    with open(args.out / "sessions.csv", "w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
-        writer.writeheader()
-        writer.writerows(rows)
+    if rows:
+        with open(args.out / "sessions.csv", "w", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+            writer.writeheader()
+            writer.writerows(rows)
     with open(args.out / "routes.jsonl", "w") as handle:
         for r in route_logs:
             handle.write(json.dumps(r) + "\n")
     with open(args.out / "decisions.jsonl", "w") as handle:
         for d in planner.decisions:
             handle.write(json.dumps(d) + "\n")
+    if incomplete:
+        (args.out / "INCOMPLETE").write_text(incomplete + "\n")
+        print("INCOMPLETE:", incomplete)
     valid = sum(d["valid"] for d in planner.decisions)
     print(f"{len(rows)} requests, {len(planner.decisions)} decisions, valid edits {valid}, "
-          f"completion {np.mean([r['completion'] for r in rows]):.4f} -> {args.out}")
+          f"completion {np.mean([r['completion'] for r in rows]) if rows else float('nan'):.4f} -> {args.out}")
 
 
 if __name__ == "__main__":

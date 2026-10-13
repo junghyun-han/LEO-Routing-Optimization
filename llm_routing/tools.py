@@ -24,20 +24,21 @@ SCHEMAS = [
         "description": "Check a full route against the routing rules; list problems, each hop's link kind and "
                        "remaining contact, links that end before the session needs them, and avoided satellites on it.",
         "parameters": {"type": "object", "additionalProperties": False,
-                       "required": ["route", "avoid_satellites", "regions"],
+                       "required": ["route"],
                        "properties": {"route": {"type": "array", "items": {"type": "integer"}},
                                       "avoid_satellites": {"type": "array", "items": {"type": "integer"}},
                                       "regions": {"type": "array", "items": {"type": "string", "enum": sorted(REGIONS)},
                                                   "description": "report route satellites over these regions during the session"}}}}},
     {"type": "function", "function": {
         "name": "find_route",
-        "description": "Compute a rule-abiding route from the ingress to the egress satellite over the whole current "
+        "description": "Optional arguments: omit any the operator gave no condition for. "
+                       "Compute a rule-abiding route from the ingress to the egress satellite over the whole current "
                        "network, never using avoid_satellites or satellites over avoid_regions during the session. If "
                        "min_remaining_s is given, inter-plane links must last at least that long (new links 20 s longer). "
                        "objective: fewest_hops, longest_contact (maximize the shortest remaining contact), fewest_new_links "
                        "(fewest links to switch on), or shortest_distance (lowest propagation delay).",
         "parameters": {"type": "object", "additionalProperties": False,
-                       "required": ["avoid_satellites", "avoid_regions", "prefer_avoid_regions", "min_remaining_s", "objective"],
+                       "required": ["objective"],
                        "properties": {"avoid_satellites": {"type": "array", "items": {"type": "integer"}},
                                       "avoid_regions": {"type": "array", "items": {"type": "string", "enum": sorted(REGIONS)},
                                                         "description": "never use satellites that are over these regions at any time during the session"},
@@ -64,7 +65,8 @@ class Toolbox:
         self.egress = planner.ground_trace.selected_access(destination, time_s)
         self.submitted = None
 
-    def check_route(self, route: List[int], avoid_satellites: List[int], regions: List[str] = ()) -> Dict:
+    def check_route(self, route: List[int], avoid_satellites: List[int] = (), regions: List[str] = ()) -> Dict:
+        avoid_satellites, regions = avoid_satellites or [], regions or []
         ok, error = to_route(self.p, self.g, route, self.source, self.destination, self.time_s, self.active)
         out = {"valid": ok is not None, "problem": error or None,
                "avoided_satellites_on_route": sorted(set(route) & set(avoid_satellites))}
@@ -103,8 +105,9 @@ class Toolbox:
         km += sum(float(np.linalg.norm(pos[a] - pos[b])) for a, b in zip(route, route[1:]))
         return km / 299792.458 * 1000.0
 
-    def find_route(self, avoid_satellites: List[int], min_remaining_s: Optional[float], objective: str,
+    def find_route(self, objective: str = "fewest_hops", avoid_satellites: List[int] = (), min_remaining_s: Optional[float] = None,
                    avoid_regions: List[str] = (), prefer_avoid_regions: List[str] = ()) -> Dict:
+        avoid_satellites, avoid_regions, prefer_avoid_regions = avoid_satellites or [], avoid_regions or [], prefer_avoid_regions or []
         banned = set(avoid_satellites)
         disliked = set()
         for r in prefer_avoid_regions:

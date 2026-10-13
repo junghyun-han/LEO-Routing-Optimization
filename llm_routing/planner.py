@@ -29,6 +29,16 @@ SYSTEM = ("You route sessions in a LEO satellite network with optical inter-sate
           '{"route": [satellite ids from ingress to egress], "reason": "one sentence"}')
 
 
+class QuotaExhausted(RuntimeError):
+    """The API refused for lack of credit: stop the run instead of silently falling back to Dijkstra."""
+
+
+def _reraise_quota(exc: Exception) -> None:
+    text = str(exc)
+    if "insufficient_quota" in text or "credit_balance" in text:
+        raise QuotaExhausted(text) from exc
+
+
 class LLMPlanner(RoutePlanner):
     def __init__(self, base: RoutePlanner, model, latlon_of, operator_text: str = "", hops: int = 1):
         self.__dict__.update(base.__dict__)
@@ -37,6 +47,7 @@ class LLMPlanner(RoutePlanner):
         self.request_id: Optional[int] = None
         self.extra_note = ""  # scenario facts given with the operator text (e.g. region boxes)
         self.session_new_links = 0  # links switched on by earlier decisions of this session
+        self.with_latlon = False  # give satellite lat/lon (scenarios with region conditions)
 
     def plan(self, method, source_station, destination_station, time_s, required_s, topology) -> Optional[Route]:
         if method != "llm":
@@ -56,7 +67,7 @@ class LLMPlanner(RoutePlanner):
             f"Ingress satellite {dijkstra.ingress}, egress satellite {dijkstra.egress}.\n"
             f"Dijkstra route: {list(dijkstra.satellites)}\n"
             f"Dijkstra hops (link kind, remaining_s): {hop_table(graph, dijkstra.satellites)}\n\n"
-            f"{LEGEND}\n{describe(graph, nodes, positions, self.latlon_of(time_s) if self.operator_text else None)}"
+            f"{LEGEND}\n{describe(graph, nodes, positions, self.latlon_of(time_s) if self.with_latlon else None)}"
         )
         tick = time.perf_counter()
         active = {canonical_edge(*e) for e in topology.dynamic}
@@ -84,6 +95,7 @@ class LLMPlanner(RoutePlanner):
             else:
                 route, error = to_route(self, graph, proposal, source, destination, time_s, active)
         except Exception as exc:  # model or parsing failure: keep the Dijkstra route
+            _reraise_quota(exc)
             error = f"{type(exc).__name__}: {exc}"
         return route, error, proposal, usage, {}
 
@@ -131,6 +143,7 @@ class ToolLLMPlanner(LLMPlanner):
             if box.submitted is None:
                 error = "no accepted submit_route"
         except Exception as exc:
+            _reraise_quota(exc)
             error = f"{type(exc).__name__}: {exc}"
         return box.submitted, error, proposal, usage, {"tool_calls": calls}
 

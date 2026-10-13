@@ -54,8 +54,8 @@ def evaluate(entry: Dict, condition: Dict, constellation, step_s: float = 10.0) 
             ll = satellite_latlon(constellation, t)
             if condition.get("hotspot_region"):  # relays only: ingress and egress are fixed for every method
                 hot.append(len(in_region(ll, sats[1:-1], condition["hotspot_region"])))
-            if condition.get("avoid_region"):
-                avoid.append(len(in_region(ll, sats, condition["avoid_region"])) > 0)
+            if condition.get("avoid_region"):  # relays only, as for hotspots
+                avoid.append(len(in_region(ll, sats[1:-1], condition["avoid_region"])) > 0)
     out["mean_delay_ms"] = float(np.mean(delays))
     if "max_delay_ms" in condition:
         out["delay_violation_share"] = float(np.mean([d > condition["max_delay_ms"] for d in delays]))
