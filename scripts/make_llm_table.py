@@ -51,7 +51,7 @@ def wilson(k: float, n: int, z: float = 1.96):
 METRICS = {"Setup (%)": ("setup_success", 100), "Compl. (%)": ("completion", 100), "Avail. (%)": ("availability", 100),
            "Int. (s)": ("interruption_s", 1), "Reconf.": ("reconfigurations", 1), "New ISLs": ("dynamic_setups", 1),
            "Path (km)": ("mean_path_km", 1)}
-DIGITS = {"Setup (%)": 2, "Compl. (%)": 2, "Compl. (%), all 3,600": 2, "Avail. (%)": 2, "Int. (s)": 2, "Reconf.": 3, "New ISLs": 2, "Path (km)": 0}
+DIGITS = {"Hit by outage (%)": 1, "Setup (%)": 2, "Compl. (%)": 2, "Compl. (%), all 3,600": 2, "Avail. (%)": 2, "Int. (s)": 2, "Reconf.": 3, "New ISLs": 2, "Path (km)": 0}
 
 
 def summarize(rows: pd.DataFrame) -> pd.DataFrame:
@@ -64,6 +64,8 @@ def summarize(rows: pd.DataFrame) -> pd.DataFrame:
         row = {"Method": method, "n": n}
         for name, (col, scale) in METRICS.items():
             row[name] = scale * sum(float(s[col].astype(float).mean()) for s in seeds) / len(seeds)
+        if "outage_hits" in g:
+            row["Hit by outage (%)"] = 100 * float((g.outage_hits.fillna(0) > 0).mean())
         row["Compl. 95% CI"] = f"{lo:.1f}-{hi:.1f}"
         out.append(row)
     return pd.DataFrame(out)

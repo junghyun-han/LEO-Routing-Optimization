@@ -55,7 +55,7 @@ class LLMPlanner(RoutePlanner):
             f"{LEGEND}\n{describe(graph, nodes, positions, self.latlon_of(time_s) if self.operator_text else None)}"
         )
         tick = time.perf_counter()
-        error, usage, text, route = "", {}, "", None
+        error, usage, text, route, proposal = "", {}, "", None, None
         try:
             msg, usage = self.model.chat([{"role": "system", "content": SYSTEM}, {"role": "user", "content": prompt}])
             text = msg["content"]
@@ -71,7 +71,7 @@ class LLMPlanner(RoutePlanner):
         self.decisions.append({
             "request_id": self.request_id, "time_s": time_s, "required_s": required_s, "valid": route is not None,
             "error": error, "changed": chosen.satellites != dijkstra.satellites, "dijkstra": list(dijkstra.satellites),
-            "route": list(chosen.satellites), "warnings": risky_links(self, graph, chosen.satellites, required_s),
+            "proposal": proposal, "route": list(chosen.satellites), "warnings": risky_links(self, graph, chosen.satellites, required_s),
             "prompt_chars": len(prompt), "seconds": time.perf_counter() - tick,
             **{k: usage.get(k, 0) for k in ("prompt_tokens", "completion_tokens")},
         })

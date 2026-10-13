@@ -64,6 +64,7 @@ def main():
     ap.add_argument("--provider", choices=["openai", "ollama"])
     ap.add_argument("--model")
     ap.add_argument("--operator-text", default="")
+    ap.add_argument("--scenario", type=Path, help="per-request outages and operator text (scripts/make_scenarios.py)")
     ap.add_argument("--hops", type=int, default=1)
     ap.add_argument("--split", choices=["eval", "dev"], default="eval")
     ap.add_argument("--limit", type=int)
@@ -80,9 +81,13 @@ def main():
     planner = LLMPlanner(env.planner, model, lambda t: satellite_latlon(con, t), args.operator_text, args.hops)
     env.planner = planner
     args.out.mkdir(parents=True, exist_ok=True)
+    scenario = json.loads(args.scenario.read_text()) if args.scenario else {}
     rows = []
     for spec in subset[:: args.every][: args.limit]:
         planner.request_id = int(spec["request_id"])
+        entry = scenario.get(str(spec["request_id"]), {})
+        env.set_outages({int(k): float(v) for k, v in entry.get("outages", {}).items()})
+        planner.operator_text = entry.get("text", args.operator_text)
         request = SessionRequest(spec["source"], spec["destination"], float(spec["request_time_s"]), float(spec["duration_s"]))
         result = env.run("llm", request)
         row = asdict(result)
