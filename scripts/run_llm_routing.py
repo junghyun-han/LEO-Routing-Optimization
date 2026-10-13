@@ -69,6 +69,8 @@ def main():
     ap.add_argument("--latlon-with-text", action="store_true", help="old rule (maintenance runs): lat/lon whenever there is operator text")
     ap.add_argument("--max-usd", type=float, default=None, help="stop (marked INCOMPLETE) once the logged spend exceeds this")
     ap.add_argument("--tools", action="store_true", help="give the model the Python tools (condition 3)")
+    ap.add_argument("--scenario-only", action="store_true", help="run only the requests the scenario covers")
+    ap.add_argument("--request-ids", type=int, nargs="+", help="run only these requests (finishing a run stopped by the cost cap)")
     ap.add_argument("--split", choices=["eval", "dev"], default="eval")
     ap.add_argument("--limit", type=int)
     ap.add_argument("--every", type=int, default=1, help="take every k-th request of the subset (dev runs)")
@@ -88,7 +90,9 @@ def main():
     rows, route_logs = [], []
     price = {"gpt-4o": (2.5, 10.0), "gpt-4o-mini": (0.15, 0.6)}.get(args.model or "", (0.0, 0.0))
     incomplete = None
-    for spec in subset[:: args.every][: args.limit]:
+    specs = [s for s in subset if (not args.scenario_only or str(s["request_id"]) in scenario)
+             and (not args.request_ids or int(s["request_id"]) in args.request_ids)]
+    for spec in specs[:: args.every][: args.limit]:
         spent = sum(d.get("prompt_tokens", 0) * price[0] + d.get("completion_tokens", 0) * price[1] for d in planner.decisions) / 1e6
         if args.max_usd is not None and spent > args.max_usd:
             incomplete = f"cost cap ${args.max_usd} reached after {len(rows)} requests"

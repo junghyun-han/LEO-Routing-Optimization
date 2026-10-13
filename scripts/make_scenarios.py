@@ -164,12 +164,73 @@ def latency(split: str) -> dict:
     return out
 
 
+MULTI_TEXT = {
+    "lifetime": "세션이 끝날 때까지 끊기지 않는 링크만 써 줘.",
+    "avoid": "{r} 상공은 규제 때문에 통과 금지야.",
+    "delay": "단방향 지연은 {L:.0f} ms 이하여야 해.",
+    "budget": "PAT 재지향(새 링크 설정)은 이 세션에서 {k}번까지만.",
+}
+
+
+def multi(split: str) -> dict:
+    """Several conditions at once, made satisfiable at the request time (docs/LLM_ROUTING.md, section 12).
+
+    Every 4th request of the subset, 40 (eval) or 8 (dev).  Always: links must last the session.  Then 2-3 of {forbidden region (if the
+    request has one), delay bound = 1.15 x the shortest-distance route meeting the
+    earlier conditions, new-link budget = fewest new links meeting them + 1}.
+    """
+    import itertools
+    import math
+    from llm_routing.formulation import decision_data, reference_route
+    avoid_of = json.loads((ROOT / "results_llm/scenarios" / f"avoid{'' if split == 'eval' else '_dev'}.json").read_text())
+    all_rows, subset = subset_requests(split)
+    con, env = build_environment(all_rows)
+    out = {}
+    combos = itertools.cycle([("avoid", "delay"), ("delay", "budget"), ("avoid", "budget"), ("avoid", "delay", "budget")])
+    for i, spec in enumerate(subset[::4][: 40 if split == "eval" else 8]):
+        t0, x = float(spec["request_time_s"]), float(spec["duration_s"])
+        topo = env._initial_topology(t0)
+        graph = env.planner._graph(t0, topo)
+        region = avoid_of.get(spec["request_id"], {}).get("avoid_region")
+        want = next(combos)
+        if "avoid" in want and not region:
+            want = ("delay", "budget")
+        data = decision_data(env.planner, graph, spec["source"], spec["destination"], t0, x, [region] if region else [])
+        cond = {"avoid_region": region if "avoid" in want else None}
+        base = reference_route(data, cond["avoid_region"], objective="km")
+        if base["route"] is None:
+            continue
+        if "delay" in want:
+            cond["max_delay_ms"] = 5.0 * math.ceil(base["delay_ms"] * 1.15 / 5.0)
+        if "budget" in want:
+            fewest = reference_route(data, cond["avoid_region"], cond.get("max_delay_ms"), objective="new_links",
+                                     hint_route=base["route"])
+            cond["max_new_links"] = int(fewest["new_links"] if fewest["route"] else base["new_links"]) + 1
+        ref = reference_route(data, cond["avoid_region"], cond.get("max_delay_ms"), cond.get("max_new_links"),
+                              hint_route=base["route"], time_limit_s=60.0)
+        if ref["route"] is None:
+            continue
+        parts = [MULTI_TEXT["lifetime"]]
+        if cond.get("avoid_region"):
+            parts.append(MULTI_TEXT["avoid"].format(r=KO_REGION[cond["avoid_region"]]))
+        if "max_delay_ms" in cond:
+            parts.append(MULTI_TEXT["delay"].format(L=cond["max_delay_ms"]))
+        if "max_new_links" in cond:
+            parts.append(MULTI_TEXT["budget"].format(k=cond["max_new_links"]))
+        entry = {k: v for k, v in cond.items() if v is not None}
+        entry.update(text=" ".join(parts), reference_hops_t0=ref["hops"], conditions=sorted(["lifetime"] + list(want)))
+        if cond.get("avoid_region"):
+            entry["note"] = region_note(cond["avoid_region"])
+        out[spec["request_id"]] = entry
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("kind", choices=["maintenance", "hotspot", "avoid", "budget", "latency"])
+    ap.add_argument("kind", choices=["maintenance", "hotspot", "avoid", "budget", "latency", "multi"])
     ap.add_argument("--split", choices=["eval", "dev"], default="eval")
     args = ap.parse_args()
-    data = {"maintenance": maintenance, "hotspot": hotspot, "avoid": avoid, "budget": budget, "latency": latency}[args.kind](args.split)
+    data = {"maintenance": maintenance, "hotspot": hotspot, "avoid": avoid, "budget": budget, "latency": latency, "multi": multi}[args.kind](args.split)
     path = ROOT / "results_llm/scenarios" / f"{args.kind}{'' if args.split == 'eval' else '_dev'}.json"
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=1))

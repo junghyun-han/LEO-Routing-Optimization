@@ -1,0 +1,837 @@
+{
+ "10": {
+  "avoid_region": "north_america_east",
+  "note": "Region box used by operations (north_america_east, '북미 동부'): sub-satellite latitude 25 to 50, longitude -90 to -60.",
+  "text": "규제 때문에 북미 동부 상공으로는 절대 보내면 안 돼."
+ },
+ "30": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "50": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "70": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "90": {
+  "avoid_region": "north_america_east",
+  "note": "Region box used by operations (north_america_east, '북미 동부'): sub-satellite latitude 25 to 50, longitude -90 to -60.",
+  "text": "데이터 주권 정책상 북미 동부 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "110": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "130": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "150": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "170": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "190": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "210": {
+  "avoid_region": "north_america_east",
+  "note": "Region box used by operations (north_america_east, '북미 동부'): sub-satellite latitude 25 to 50, longitude -90 to -60.",
+  "text": "데이터 주권 정책상 북미 동부 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "230": {
+  "avoid_region": "north_america_east",
+  "note": "Region box used by operations (north_america_east, '북미 동부'): sub-satellite latitude 25 to 50, longitude -90 to -60.",
+  "text": "보안 정책: 북미 동부 상공 통과 금지."
+ },
+ "250": {
+  "avoid_region": "north_america_east",
+  "note": "Region box used by operations (north_america_east, '북미 동부'): sub-satellite latitude 25 to 50, longitude -90 to -60.",
+  "text": "규제 때문에 북미 동부 상공으로는 절대 보내면 안 돼."
+ },
+ "270": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "290": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "310": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "330": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "350": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "370": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "390": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "410": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "430": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "450": {
+  "avoid_region": "north_america_east",
+  "note": "Region box used by operations (north_america_east, '북미 동부'): sub-satellite latitude 25 to 50, longitude -90 to -60.",
+  "text": "데이터 주권 정책상 북미 동부 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "470": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "490": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "510": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "530": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "550": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "570": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "590": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "610": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "630": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "650": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "670": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "690": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "710": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "730": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "750": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "770": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "790": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "810": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "830": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "850": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "870": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "890": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "910": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "930": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "950": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "970": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "1110": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "1170": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "1210": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "규제 때문에 유럽 상공으로는 절대 보내면 안 돼."
+ },
+ "1230": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "1250": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "1270": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "1290": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "1310": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "1330": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "1350": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "데이터 주권 정책상 유럽 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "1370": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "1390": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "1410": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "데이터 주권 정책상 유럽 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "1430": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "1450": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "규제 때문에 유럽 상공으로는 절대 보내면 안 돼."
+ },
+ "1470": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "1490": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "1510": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "1530": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "1550": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "1570": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "1590": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "데이터 주권 정책상 유럽 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "1610": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "1630": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "1650": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "데이터 주권 정책상 유럽 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "1670": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "1690": {
+  "avoid_region": "mediterranean",
+  "note": "Region box used by operations (mediterranean, '지중해'): sub-satellite latitude 30 to 45, longitude -5 to 36.",
+  "text": "규제 때문에 지중해 상공으로는 절대 보내면 안 돼."
+ },
+ "1710": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "1730": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "1750": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "1770": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "1790": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "1810": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "1830": {
+  "avoid_region": "mediterranean",
+  "note": "Region box used by operations (mediterranean, '지중해'): sub-satellite latitude 30 to 45, longitude -5 to 36.",
+  "text": "데이터 주권 정책상 지중해 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "1850": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "1870": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "1890": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "데이터 주권 정책상 유럽 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "1910": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "1930": {
+  "avoid_region": "mediterranean",
+  "note": "Region box used by operations (mediterranean, '지중해'): sub-satellite latitude 30 to 45, longitude -5 to 36.",
+  "text": "규제 때문에 지중해 상공으로는 절대 보내면 안 돼."
+ },
+ "1950": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "1970": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "1990": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "2010": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "2030": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "2050": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "2070": {
+  "avoid_region": "mediterranean",
+  "note": "Region box used by operations (mediterranean, '지중해'): sub-satellite latitude 30 to 45, longitude -5 to 36.",
+  "text": "데이터 주권 정책상 지중해 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "2090": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "2110": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "2130": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "데이터 주권 정책상 유럽 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "2150": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "2170": {
+  "avoid_region": "mediterranean",
+  "note": "Region box used by operations (mediterranean, '지중해'): sub-satellite latitude 30 to 45, longitude -5 to 36.",
+  "text": "규제 때문에 지중해 상공으로는 절대 보내면 안 돼."
+ },
+ "2190": {
+  "avoid_region": "mediterranean",
+  "note": "Region box used by operations (mediterranean, '지중해'): sub-satellite latitude 30 to 45, longitude -5 to 36.",
+  "text": "데이터 주권 정책상 지중해 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "2230": {
+  "avoid_region": "mediterranean",
+  "note": "Region box used by operations (mediterranean, '지중해'): sub-satellite latitude 30 to 45, longitude -5 to 36.",
+  "text": "규제 때문에 지중해 상공으로는 절대 보내면 안 돼."
+ },
+ "2250": {
+  "avoid_region": "mediterranean",
+  "note": "Region box used by operations (mediterranean, '지중해'): sub-satellite latitude 30 to 45, longitude -5 to 36.",
+  "text": "데이터 주권 정책상 지중해 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "2270": {
+  "avoid_region": "mediterranean",
+  "note": "Region box used by operations (mediterranean, '지중해'): sub-satellite latitude 30 to 45, longitude -5 to 36.",
+  "text": "보안 정책: 지중해 상공 통과 금지."
+ },
+ "2290": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "규제 때문에 유럽 상공으로는 절대 보내면 안 돼."
+ },
+ "2310": {
+  "avoid_region": "mediterranean",
+  "note": "Region box used by operations (mediterranean, '지중해'): sub-satellite latitude 30 to 45, longitude -5 to 36.",
+  "text": "데이터 주권 정책상 지중해 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "2330": {
+  "avoid_region": "mediterranean",
+  "note": "Region box used by operations (mediterranean, '지중해'): sub-satellite latitude 30 to 45, longitude -5 to 36.",
+  "text": "보안 정책: 지중해 상공 통과 금지."
+ },
+ "2370": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "데이터 주권 정책상 유럽 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "2390": {
+  "avoid_region": "mediterranean",
+  "note": "Region box used by operations (mediterranean, '지중해'): sub-satellite latitude 30 to 45, longitude -5 to 36.",
+  "text": "보안 정책: 지중해 상공 통과 금지."
+ },
+ "2410": {
+  "avoid_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "text": "규제 때문에 동아시아 상공으로는 절대 보내면 안 돼."
+ },
+ "2430": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "데이터 주권 정책상 동남아시아 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "2450": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "보안 정책: 동남아시아 상공 통과 금지."
+ },
+ "2470": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "2490": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "2510": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "보안 정책: 유럽 상공 통과 금지."
+ },
+ "2530": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "규제 때문에 유럽 상공으로는 절대 보내면 안 돼."
+ },
+ "2550": {
+  "avoid_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "text": "데이터 주권 정책상 동아시아 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "2570": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "보안 정책: 동남아시아 상공 통과 금지."
+ },
+ "2590": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "규제 때문에 동남아시아 상공으로는 절대 보내면 안 돼."
+ },
+ "2610": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "2630": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "2650": {
+  "avoid_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "text": "규제 때문에 동아시아 상공으로는 절대 보내면 안 돼."
+ },
+ "2670": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "데이터 주권 정책상 동남아시아 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "2690": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "보안 정책: 동남아시아 상공 통과 금지."
+ },
+ "2710": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "2730": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "2750": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "보안 정책: 유럽 상공 통과 금지."
+ },
+ "2770": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "규제 때문에 유럽 상공으로는 절대 보내면 안 돼."
+ },
+ "2790": {
+  "avoid_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "text": "데이터 주권 정책상 동아시아 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "2810": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "보안 정책: 동남아시아 상공 통과 금지."
+ },
+ "2830": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "규제 때문에 동남아시아 상공으로는 절대 보내면 안 돼."
+ },
+ "2850": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "2870": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "2890": {
+  "avoid_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "text": "규제 때문에 동아시아 상공으로는 절대 보내면 안 돼."
+ },
+ "2910": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "데이터 주권 정책상 동남아시아 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "2930": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "보안 정책: 동남아시아 상공 통과 금지."
+ },
+ "2950": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "2970": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "2990": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "보안 정책: 유럽 상공 통과 금지."
+ },
+ "3010": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "규제 때문에 유럽 상공으로는 절대 보내면 안 돼."
+ },
+ "3030": {
+  "avoid_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "text": "데이터 주권 정책상 동아시아 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "3050": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "보안 정책: 동남아시아 상공 통과 금지."
+ },
+ "3070": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "규제 때문에 동남아시아 상공으로는 절대 보내면 안 돼."
+ },
+ "3090": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "3110": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "3130": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "규제 때문에 동남아시아 상공으로는 절대 보내면 안 돼."
+ },
+ "3150": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "데이터 주권 정책상 동남아시아 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "3170": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "보안 정책: 동남아시아 상공 통과 금지."
+ },
+ "3190": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "규제 때문에 북대서양 상공으로는 절대 보내면 안 돼."
+ },
+ "3210": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "3230": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "보안 정책: 유럽 상공 통과 금지."
+ },
+ "3250": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "규제 때문에 유럽 상공으로는 절대 보내면 안 돼."
+ },
+ "3290": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "보안 정책: 동남아시아 상공 통과 금지."
+ },
+ "3310": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "규제 때문에 동남아시아 상공으로는 절대 보내면 안 돼."
+ },
+ "3330": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "3350": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "보안 정책: 북대서양 상공 통과 금지."
+ },
+ "3370": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "규제 때문에 동남아시아 상공으로는 절대 보내면 안 돼."
+ },
+ "3390": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "데이터 주권 정책상 동남아시아 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "3410": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "보안 정책: 동남아시아 상공 통과 금지."
+ },
+ "3430": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "규제 때문에 유럽 상공으로는 절대 보내면 안 돼."
+ },
+ "3450": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "데이터 주권 정책상 유럽 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "3470": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "보안 정책: 유럽 상공 통과 금지."
+ },
+ "3490": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "규제 때문에 유럽 상공으로는 절대 보내면 안 돼."
+ },
+ "3530": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "보안 정책: 동남아시아 상공 통과 금지."
+ },
+ "3550": {
+  "avoid_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "text": "규제 때문에 동남아시아 상공으로는 절대 보내면 안 돼."
+ },
+ "3570": {
+  "avoid_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "text": "데이터 주권 정책상 북대서양 위로는 이 세션 트래픽이 지나가면 안 돼."
+ },
+ "3590": {
+  "avoid_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "text": "보안 정책: 유럽 상공 통과 금지."
+ }
+}
