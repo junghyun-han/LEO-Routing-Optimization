@@ -4,3 +4,4 @@ __pycache__/
 .pytest_cache/
 .DS_Store
 results_cpu/
+results_multisession/*.log

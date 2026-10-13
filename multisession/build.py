@@ -13,6 +13,14 @@ from leo_session.topology import build_initial_topology
 from .model import Instance, Session, Snapshot, canonical_edge
 
 PAIR_ORDER = ("short", "medium", "long")
+# Ground contacts are generated up to a horizon; a pass still in progress there
+# would look shorter than it is.  1,200 s exceeds any single pass at 550 km with
+# a 1,000 km ground range, so remaining GSL times at decision times are exact.
+GROUND_MARGIN_S = 1200.0
+
+
+def ground_horizon(times: Iterable[float]) -> float:
+    return max(times) + GROUND_MARGIN_S
 
 
 def load_environment(trace_path: Path, horizon_s: float, config: EnvironmentConfig = DEFAULT_CONFIG):
@@ -33,6 +41,10 @@ def build_snapshot(constellation, isl_trace, ground_trace, time_s: float,
             ((int(s), ground_trace.remaining_s(station, s, time_s)) for s in ground_trace.visible(station, time_s)),
             key=lambda item: (-item[1], item[0]),  # same order as v3 selected_access
         )
+        for _, g in ranked:
+            if time_s + g >= ground_trace.horizon_s - 1.0e-6:
+                raise ValueError(f"ground horizon {ground_trace.horizon_s:.0f} s clips a pass at t={time_s:.1f} s; "
+                                 "use ground_horizon()")
         access[station] = tuple(ranked)
     return Snapshot(float(time_s), tuple(persistent), dynamic, tuple(initial.dynamic), access,
                     config.dynamic_setup_s)

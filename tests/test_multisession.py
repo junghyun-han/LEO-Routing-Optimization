@@ -72,9 +72,9 @@ def test_cut_bound_is_valid_on_toy():
 @pytest.fixture(scope="module")
 def v3_snapshot():
     from leo_session.ground import GROUND_STATIONS
-    from multisession.build import build_snapshot, decision_times, load_environment
+    from multisession.build import build_snapshot, decision_times, ground_horizon, load_environment
     t0, _ = decision_times(ROOT / "results_paper/paper_artifacts/evaluation_requests.csv")[0]
-    con, isl, gtr = load_environment(ROOT / "cache/contact_trace_1584_24_11.npz", t0 + 300.0)
+    con, isl, gtr = load_environment(ROOT / "cache/contact_trace_1584_24_11.npz", ground_horizon([t0]))
     return build_snapshot(con, isl, gtr, t0, GROUND_STATIONS), gtr, t0
 
 
@@ -93,3 +93,13 @@ def test_baselines_feasible_on_v3(v3_snapshot, antennas, capacity, per_dest, dur
         sol = method(inst)
         assert verify(inst, sol) == []
         assert evaluate(inst, sol)["admitted"] <= bound
+
+
+def test_exact_model_on_toy_is_optimal_and_verified():
+    from multisession.exact import solve_exact
+    inst = toy_instance(3, capacity=1)  # node 0 has two usable ISLs, so at most 2 sessions
+    result = solve_exact(inst, time_limit_s=10, workers=1)
+    assert verify(inst, result.solution) == []
+    metrics = evaluate(inst, result.solution)
+    assert result.optimal and metrics["admitted"] == 2 and metrics["new_links"] == 1
+    assert result.admitted_bound == 2

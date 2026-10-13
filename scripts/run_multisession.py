@@ -20,7 +20,7 @@ import pandas as pd  # noqa: E402
 
 from leo_session.ground import GROUND_STATIONS  # noqa: E402
 from multisession import cut_upper_bound, evaluate, fixed_topology, greedy_reconfiguration, verify  # noqa: E402
-from multisession.build import build_snapshot, decision_times, load_environment, make_instance  # noqa: E402
+from multisession.build import build_snapshot, decision_times, ground_horizon, load_environment, make_instance  # noqa: E402
 
 METHODS = {"fixed": fixed_topology, "greedy": greedy_reconfiguration}
 
@@ -39,8 +39,7 @@ def main() -> None:
     args = ap.parse_args()
 
     times = [(t, s) for t, s in decision_times(args.request_file) if args.split in ("all", s)]
-    horizon = max(t for t, _ in times) + max(args.durations) + 60.0
-    constellation, isl_trace, ground_trace = load_environment(args.trace, horizon)
+    constellation, isl_trace, ground_trace = load_environment(args.trace, ground_horizon(t for t, _ in times))
     args.out.mkdir(parents=True, exist_ok=True)
     rows = []
     start = time.perf_counter()
