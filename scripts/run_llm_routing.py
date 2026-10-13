@@ -27,7 +27,7 @@ import numpy as np  # noqa: E402
 from leo_session import ContactTrace, GroundContactGenerator, SessionEnvironment, SessionRequest, WalkerDeltaConstellation  # noqa: E402
 from leo_session.config import DEFAULT_CONFIG  # noqa: E402
 from leo_session.reward import RewardConfig  # noqa: E402
-from llm_routing.planner import LLMPlanner  # noqa: E402
+from llm_routing.planner import LLMPlanner, ToolLLMPlanner  # noqa: E402
 from multisession.conditions import satellite_latlon  # noqa: E402
 
 REQUESTS = ROOT / "results_paper/paper_artifacts/evaluation_requests.csv"
@@ -66,6 +66,7 @@ def main():
     ap.add_argument("--operator-text", default="")
     ap.add_argument("--scenario", type=Path, help="per-request outages and operator text (scripts/make_scenarios.py)")
     ap.add_argument("--hops", type=int, default=1)
+    ap.add_argument("--tools", action="store_true", help="give the model the Python tools (condition 3)")
     ap.add_argument("--split", choices=["eval", "dev"], default="eval")
     ap.add_argument("--limit", type=int)
     ap.add_argument("--every", type=int, default=1, help="take every k-th request of the subset (dev runs)")
@@ -78,7 +79,7 @@ def main():
         model = ChatModel(args.provider, args.model, max_tokens=1024)
     all_rows, subset = subset_requests(args.split)
     con, env = build_environment(all_rows)
-    planner = LLMPlanner(env.planner, model, lambda t: satellite_latlon(con, t), args.operator_text, args.hops)
+    planner = (ToolLLMPlanner if args.tools else LLMPlanner)(env.planner, model, lambda t: satellite_latlon(con, t), args.operator_text, args.hops)
     env.planner = planner
     args.out.mkdir(parents=True, exist_ok=True)
     scenario = json.loads(args.scenario.read_text()) if args.scenario else {}

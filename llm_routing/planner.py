@@ -55,27 +55,79 @@ class LLMPlanner(RoutePlanner):
             f"{LEGEND}\n{describe(graph, nodes, positions, self.latlon_of(time_s) if self.operator_text else None)}"
         )
         tick = time.perf_counter()
-        error, usage, text, route, proposal = "", {}, "", None, None
-        try:
-            msg, usage = self.model.chat([{"role": "system", "content": SYSTEM}, {"role": "user", "content": prompt}])
-            text = msg["content"]
-            proposal = _last_route(text)
-            if proposal is None:
-                error = "no JSON route in the answer"
-            else:
-                active = {canonical_edge(*e) for e in topology.dynamic}
-                route, error = to_route(self, graph, proposal, source_station, destination_station, time_s, active)
-        except Exception as exc:  # model or parsing failure: keep the Dijkstra route
-            error = f"{type(exc).__name__}: {exc}"
+        active = {canonical_edge(*e) for e in topology.dynamic}
+        route, error, proposal, usage, extra = self._decide(prompt, graph, source_station, destination_station,
+                                                            time_s, required_s, active)
         chosen = route if route is not None else dijkstra
         self.decisions.append({
             "request_id": self.request_id, "time_s": time_s, "required_s": required_s, "valid": route is not None,
             "error": error, "changed": chosen.satellites != dijkstra.satellites, "dijkstra": list(dijkstra.satellites),
             "proposal": proposal, "route": list(chosen.satellites), "warnings": risky_links(self, graph, chosen.satellites, required_s),
             "prompt_chars": len(prompt), "seconds": time.perf_counter() - tick,
-            **{k: usage.get(k, 0) for k in ("prompt_tokens", "completion_tokens")},
+            **{k: usage.get(k, 0) for k in ("prompt_tokens", "completion_tokens")}, **extra,
         })
         return chosen
+
+    def _decide(self, prompt, graph, source, destination, time_s, required_s, active):
+        """One answer, no tools.  Returns (route or None, error, proposal, usage, extra log fields)."""
+        error, usage, route, proposal = "", {}, None, None
+        try:
+            msg, usage = self.model.chat([{"role": "system", "content": SYSTEM}, {"role": "user", "content": prompt}])
+            proposal = _last_route(msg["content"])
+            if proposal is None:
+                error = "no JSON route in the answer"
+            else:
+                route, error = to_route(self, graph, proposal, source, destination, time_s, active)
+        except Exception as exc:  # model or parsing failure: keep the Dijkstra route
+            error = f"{type(exc).__name__}: {exc}"
+        return route, error, proposal, usage, {}
+
+
+TOOL_SYSTEM = SYSTEM.split("Before answering")[0] + (
+    "You can call tools: check_route (verify a route), find_route (compute a rule-abiding route over the whole "
+    "network, avoiding given satellites and optionally requiring long-lasting links), and submit_route. The tools "
+    "do not know the operator conditions; pass what matters to them. Finish by calling submit_route.")
+
+
+class ToolLLMPlanner(LLMPlanner):
+    """Same input and decision points, plus the Python tools of llm_routing.tools."""
+
+    max_turns = 8
+
+    def _decide(self, prompt, graph, source, destination, time_s, required_s, active):
+        from .tools import SCHEMAS, Toolbox
+        box = Toolbox(self, graph, source, destination, time_s, required_s, active)
+        messages = [{"role": "system", "content": TOOL_SYSTEM}, {"role": "user", "content": prompt}]
+        usage = {"prompt_tokens": 0, "completion_tokens": 0}
+        calls, error, proposal = [], "", None
+        try:
+            for _ in range(self.max_turns):
+                msg, u = self.model.chat(messages, SCHEMAS)
+                for k in usage:
+                    usage[k] += u.get(k, 0)
+                messages.append(msg)
+                if not msg.get("tool_calls"):
+                    break
+                for call in msg["tool_calls"]:
+                    name = call["function"]["name"]
+                    try:
+                        args = json.loads(call["function"]["arguments"] or "{}")
+                    except json.JSONDecodeError as exc:
+                        args, result = {}, {"error": f"arguments are not JSON: {exc}"}
+                    else:
+                        result = box.call(name, args)
+                    if name == "submit_route":
+                        proposal = args.get("route")
+                    calls.append({"tool": name, "ok": not result.get("error") and result.get("accepted", True) is not False
+                                  and result.get("found", True) is not False})
+                    messages.append({"role": "tool", "tool_call_id": call["id"], "content": json.dumps(result)[:6000]})
+                if box.submitted is not None:
+                    break
+            if box.submitted is None:
+                error = "no accepted submit_route"
+        except Exception as exc:
+            error = f"{type(exc).__name__}: {exc}"
+        return box.submitted, error, proposal, usage, {"tool_calls": calls}
 
 
 def _last_route(text: str):
