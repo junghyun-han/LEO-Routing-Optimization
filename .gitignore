@@ -6,3 +6,4 @@ __pycache__/
 results_cpu/
 results_multisession/*.log
 .env
+results_llm/*.log

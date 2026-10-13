@@ -78,6 +78,32 @@ def fmt(table: pd.DataFrame) -> pd.DataFrame:
     return t
 
 
+PRICES = {"gpt-4o": (2.50, 10.00), "gpt-4o-mini": (0.15, 0.60)}  # USD per 1M input/output tokens, OpenAI standard tier
+
+
+def agent_stats(path: Path, dijkstra: pd.DataFrame) -> dict:
+    """Decision validity, edits, cost, and a paired exact McNemar test of completion against Dijkstra."""
+    import json
+    from collections import Counter
+    from math import comb
+    d = [json.loads(line) for line in (path / "decisions.jsonl").read_text().splitlines()]
+    s = pd.read_csv(path / "sessions.csv").set_index("request_id")
+    r = dijkstra.loc[s.index]
+    only_llm = int((s.completion & ~r.completion.astype(bool)).sum())
+    only_dij = int((~s.completion & r.completion.astype(bool)).sum())
+    n, k = only_llm + only_dij, min(only_llm, only_dij)
+    p = min(1.0, 2 * sum(comb(n, i) for i in range(k + 1)) / 2 ** n) if n else 1.0
+    model = path.name.rsplit("_", 1)[0]
+    tin, tout = sum(x["prompt_tokens"] for x in d), sum(x["completion_tokens"] for x in d)
+    price = PRICES.get(model, (float("nan"), float("nan")))
+    return {"Run": path.name, "Decisions": len(d), "Valid (%)": round(100 * sum(x["valid"] for x in d) / len(d), 1),
+            "Changed": sum(x["changed"] for x in d),
+            "Top invalid reasons": "; ".join(f"{e} ({c})" for e, c in Counter(x["error"][:40] for x in d if not x["valid"]).most_common(3)),
+            "Completed only by LLM / only by Dijkstra": f"{only_llm} / {only_dij}", "McNemar p": f"{p:.4f}",
+            "Tokens in/out per decision": f"{tin // len(d)} / {tout // len(d)}", "Cost (USD)": round(tin / 1e6 * price[0] + tout / 1e6 * price[1], 2),
+            "s per decision": round(sum(x["seconds"] for x in d) / len(d), 1)}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--check-paper", action="store_true")
@@ -100,6 +126,11 @@ def main():
     order = ORDER + [m for m in table.Method if m not in ORDER]
     table = table.set_index("Method").loc[order].reset_index()
     text = fmt(table).to_markdown(index=False)
+    if args.llm:
+        base = pd.read_csv(ROOT / "results_paper/main_240_metrics/sessions.csv")
+        dij = base[base.method == "raw"].set_index("request_id")
+        stats = pd.DataFrame([agent_stats(p, dij) for p in args.llm])
+        text += "\n\nLLM decisions\n\n" + stats.to_markdown(index=False)
     print(text)
     if args.out:
         args.out.write_text(text + "\n")
