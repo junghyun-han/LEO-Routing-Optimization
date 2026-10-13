@@ -11,6 +11,10 @@ import math
 from typing import Dict, List, Optional, Sequence
 
 from leo_session.topology import canonical_edge
+from multisession.conditions import REGIONS
+
+from .compliance import in_region
+from multisession.conditions import satellite_latlon
 
 from .route_edit import hop_table, risky_links, to_route
 
@@ -19,20 +23,29 @@ SCHEMAS = [
         "name": "check_route",
         "description": "Check a full route against the routing rules; list problems, each hop's link kind and "
                        "remaining contact, links that end before the session needs them, and avoided satellites on it.",
-        "parameters": {"type": "object", "additionalProperties": False, "required": ["route", "avoid_satellites"],
+        "parameters": {"type": "object", "additionalProperties": False,
+                       "required": ["route", "avoid_satellites", "regions"],
                        "properties": {"route": {"type": "array", "items": {"type": "integer"}},
-                                      "avoid_satellites": {"type": "array", "items": {"type": "integer"}}}}}},
+                                      "avoid_satellites": {"type": "array", "items": {"type": "integer"}},
+                                      "regions": {"type": "array", "items": {"type": "string", "enum": sorted(REGIONS)},
+                                                  "description": "report route satellites over these regions during the session"}}}}},
     {"type": "function", "function": {
         "name": "find_route",
         "description": "Compute a rule-abiding route from the ingress to the egress satellite over the whole current "
-                       "network, never using avoid_satellites. If min_remaining_s is given, inter-plane links must last at "
-                       "least that long (new links 20 s longer). objective: fewest_hops or longest_contact "
-                       "(maximize the shortest remaining contact on the route).",
+                       "network, never using avoid_satellites or satellites over avoid_regions during the session. If "
+                       "min_remaining_s is given, inter-plane links must last at least that long (new links 20 s longer). "
+                       "objective: fewest_hops, longest_contact (maximize the shortest remaining contact), fewest_new_links "
+                       "(fewest links to switch on), or shortest_distance (lowest propagation delay).",
         "parameters": {"type": "object", "additionalProperties": False,
-                       "required": ["avoid_satellites", "min_remaining_s", "objective"],
+                       "required": ["avoid_satellites", "avoid_regions", "prefer_avoid_regions", "min_remaining_s", "objective"],
                        "properties": {"avoid_satellites": {"type": "array", "items": {"type": "integer"}},
+                                      "avoid_regions": {"type": "array", "items": {"type": "string", "enum": sorted(REGIONS)},
+                                                        "description": "never use satellites that are over these regions at any time during the session"},
+                                      "prefer_avoid_regions": {"type": "array", "items": {"type": "string", "enum": sorted(REGIONS)},
+                                                               "description": "pass over these regions as little as possible (fewest relay satellites there first, then the objective); not with longest_contact"},
                                       "min_remaining_s": {"type": ["number", "null"]},
-                                      "objective": {"type": "string", "enum": ["fewest_hops", "longest_contact"]}}}}},
+                                      "objective": {"type": "string", "enum": ["fewest_hops", "longest_contact",
+                                                                               "fewest_new_links", "shortest_distance"]}}}}},
     {"type": "function", "function": {
         "name": "submit_route",
         "description": "Submit the final route (ingress ... egress). Rejected with the reason if it breaks a rule.",
@@ -51,17 +64,55 @@ class Toolbox:
         self.egress = planner.ground_trace.selected_access(destination, time_s)
         self.submitted = None
 
-    def check_route(self, route: List[int], avoid_satellites: List[int]) -> Dict:
+    def check_route(self, route: List[int], avoid_satellites: List[int], regions: List[str] = ()) -> Dict:
         ok, error = to_route(self.p, self.g, route, self.source, self.destination, self.time_s, self.active)
         out = {"valid": ok is not None, "problem": error or None,
                "avoided_satellites_on_route": sorted(set(route) & set(avoid_satellites))}
         if ok is not None:
             out["hops"] = hop_table(self.g, route)
             out["links_ending_early"] = risky_links(self.p, self.g, route, self.required_s)
+            out["new_links"] = len(ok.new_dynamic_edges)
+            out["delay_ms_now"] = round(self._delay_ms(route), 1)
+            for r in regions:
+                out[f"satellites_over_{r}_during_session"] = sorted(set(route) & self._region_sats(r))
         return out
 
-    def find_route(self, avoid_satellites: List[int], min_remaining_s: Optional[float], objective: str) -> Dict:
+    def _window(self):
+        end = self.time_s + self.required_s + self.p.config.dynamic_setup_s
+        return [self.time_s + k * 10.0 for k in range(int((end - self.time_s) // 10.0) + 1)]
+
+    def _region_sats(self, region: str) -> set:
+        if region not in REGIONS:
+            raise TypeError(f"unknown region {region}")
+        cache = self.__dict__.setdefault("_region_cache", {})
+        if region not in cache:
+            sats = set()
+            for t in self._window():
+                ll = satellite_latlon(self.p.constellation, t)
+                sats |= set(in_region(ll, range(len(ll)), region))
+            cache[region] = sats
+        return cache[region]
+
+    def _delay_ms(self, route: List[int]) -> float:
+        import numpy as np
+        from leo_session.ground import GROUND_STATIONS
+        pos = self.p.constellation.positions(self.time_s)
+        radius = self.p.constellation.config.earth_radius_km
+        km = float(np.linalg.norm(pos[route[0]] - GROUND_STATIONS[self.source].eci(self.time_s, radius)))
+        km += float(np.linalg.norm(pos[route[-1]] - GROUND_STATIONS[self.destination].eci(self.time_s, radius)))
+        km += sum(float(np.linalg.norm(pos[a] - pos[b])) for a, b in zip(route, route[1:]))
+        return km / 299792.458 * 1000.0
+
+    def find_route(self, avoid_satellites: List[int], min_remaining_s: Optional[float], objective: str,
+                   avoid_regions: List[str] = (), prefer_avoid_regions: List[str] = ()) -> Dict:
         banned = set(avoid_satellites)
+        disliked = set()
+        for r in prefer_avoid_regions:
+            disliked |= self._region_sats(r)
+        disliked -= {self.ingress, self.egress}
+        for r in avoid_regions:  # the ingress and egress are fixed for every method, so regions never ban them
+            banned |= self._region_sats(r) - {self.ingress, self.egress}
+        positions = self.p.constellation.positions(self.time_s)
         if self.ingress in banned or self.egress in banned:
             return {"found": False, "problem": "the ingress or egress satellite is in avoid_satellites"}
         setup = self.p.config.dynamic_setup_s
@@ -101,7 +152,17 @@ class Toolbox:
                     better = nxt not in best or cand > best[nxt]
                     push = (-cand[0], -cand[1], v, d)
                 else:
-                    cand = (key[0] + 1, key[1] + int(d and not act))
+                    new = int(d and not act)
+                    if objective == "fewest_new_links":
+                        step = (new, 1)
+                    elif objective == "shortest_distance":
+                        import numpy as np
+                        step = (float(np.linalg.norm(positions[u] - positions[v])), new)
+                    else:
+                        step = (1, new)
+                    if v in disliked:  # lexicographic: fewer relays over preferred-avoid regions first
+                        step = (step[0] + 1.0e9, step[1])
+                    cand = (key[0] + step[0], key[1] + step[1])
                     better = nxt not in best or cand < best[nxt]
                     push = (cand[0], cand[1], v, d)
                 if better:
@@ -109,10 +170,14 @@ class Toolbox:
                     parent[nxt] = state
                     heapq.heappush(heap, push)
         if goal is None:
-            return {"found": False, "problem": "no route satisfies these conditions"}
+            hint = (" No route avoids these regions for the whole session; prefer_avoid_regions passes over them as "
+                    "little as possible." if avoid_regions else "")
+            return {"found": False, "problem": "no route satisfies these conditions." + hint}
         route = [s[0] for s in self._path(parent, goal)]
+        ok, _ = to_route(self.p, self.g, route, self.source, self.destination, self.time_s, self.active)
         return {"found": True, "route": route, "hops": hop_table(self.g, route),
-                "links_ending_early": risky_links(self.p, self.g, route, self.required_s)}
+                "links_ending_early": risky_links(self.p, self.g, route, self.required_s),
+                "new_links": len(ok.new_dynamic_edges) if ok else None, "delay_ms_now": round(self._delay_ms(route), 1)}
 
     @staticmethod
     def _path(parent, state) -> List:

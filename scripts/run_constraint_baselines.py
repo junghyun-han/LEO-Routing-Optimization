@@ -61,7 +61,7 @@ def main():
     all_rows, subset = subset_requests("eval")
     _, env = build_environment(all_rows)
     agents = ppo_agents(args.device) if "ppo" in args.methods else []
-    rows = []
+    rows, route_logs = [], []
     for spec in subset[: args.limit]:
         rid = int(spec["request_id"])
         request = SessionRequest(spec["source"], spec["destination"], float(spec["request_time_s"]), float(spec["duration_s"]))
@@ -72,6 +72,7 @@ def main():
                      for seed, agent in agents]
         for method, seed, go in runs:
             apply_scenario(env, scenario, rid)
+            env.route_log = []
             result = go()
             row = asdict(result)
             row.update(method=method, seed=seed, request_id=rid, pair=spec["pair"], source=spec["source"],
@@ -79,11 +80,18 @@ def main():
                        duration_s=float(spec["duration_s"]))
             row["availability"] = max(0.0, 1.0 - result.interruption_s / row["duration_s"]) if result.setup_success else 0.0
             rows.append(row)
+            route_logs.append({"request_id": rid, "method": method, "seed": seed, "source": row["source"],
+                               "destination": row["destination"], "established_time_s": row["established_time_s"],
+                               "duration_s": row["duration_s"], "dynamic_setups": row["dynamic_setups"],
+                               "routes": env.route_log})
     args.out.mkdir(parents=True, exist_ok=True)
     with open(args.out / "sessions.csv", "w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
         writer.writeheader()
         writer.writerows(rows)
+    with open(args.out / "routes.jsonl", "w") as handle:
+        for r in route_logs:
+            handle.write(json.dumps(r) + "\n")
     print(f"{len(rows)} rows -> {args.out}")
 
 

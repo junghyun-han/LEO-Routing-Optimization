@@ -120,6 +120,51 @@ def agent_stats(path: Path, dijkstra: pd.DataFrame, scenario=None) -> dict:
             "s per decision": round(sum(x["seconds"] for x in d) / len(d), 1)}
 
 
+CONDITION_KEYS = ("hotspot_region", "avoid_region", "max_delay_ms", "max_new_links")
+
+
+def scenario_conditions(path):
+    if not path:
+        return False
+    data = __import__("json").loads(path.read_text())
+    return any(k in v for v in data.values() for k in CONDITION_KEYS)
+
+
+def compliance_table(scenario_path, baselines_dir, llm_dirs) -> pd.DataFrame:
+    """Per-method compliance from routes.jsonl, followed over the whole session."""
+    import json
+    from leo_session import WalkerDeltaConstellation
+    from leo_session.config import DEFAULT_CONFIG
+    from llm_routing.compliance import evaluate
+    sys.path.insert(0, str(ROOT))
+    con = WalkerDeltaConstellation(DEFAULT_CONFIG)
+    cond = {int(k): v for k, v in json.loads(scenario_path.read_text()).items()}
+    sources = [(baselines_dir / "routes.jsonl", None)] if baselines_dir else []
+    sources += [(d / "routes.jsonl", f"LLM ({d.name})") for d in llm_dirs]
+    rows = []
+    for path, label in sources:
+        for line in path.read_text().splitlines():
+            e = json.loads(line)
+            c = cond.get(int(e["request_id"]), {})
+            r = evaluate(e, c, con)
+            r["Method"] = label or NAMES.get(e["method"], e["method"])
+            if "max_new_links" in c:
+                r["budget_violation"] = float(e["dynamic_setups"] > c["max_new_links"])
+            rows.append(r)
+    df = pd.DataFrame(rows)
+    agg = {"Mean delay (ms)": ("mean_delay_ms", 1)}
+    for col, (src, scale) in {"Hotspot time (%)": ("hotspot_time_share", 100), "Hotspot relays": ("hotspot_satellites_mean", 1),
+                              "Avoid-region violation (%)": ("avoid_violation", 100), "Avoid-region time (%)": ("avoid_time_share", 100),
+                              "Delay over bound (%)": ("delay_violation_share", 100), "Budget violation (%)": ("budget_violation", 100)}.items():
+        if src in df:
+            agg[col] = (src, scale)
+    out = df.groupby("Method", sort=False).agg(**{k: (v[0], "mean") for k, v in agg.items()}).reset_index()
+    for k, (_, scale) in agg.items():
+        out[k] = out[k] * scale
+        DIGITS.setdefault(k, 1)
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--check-paper", action="store_true")
@@ -145,6 +190,9 @@ def main():
     table = summarize(rows)
     if full is not None:
         table["Compl. (%), all 3,600"] = table.Method.map(full)
+    if scenario_conditions(args.scenario):
+        comp = compliance_table(args.scenario, args.baselines, args.llm)
+        table = table.merge(comp, on="Method", how="left")
     order = ORDER + [m for m in table.Method if m not in ORDER]
     table = table.set_index("Method").loc[order].reset_index()
     text = fmt(table).to_markdown(index=False)

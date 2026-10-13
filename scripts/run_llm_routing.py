@@ -83,11 +83,14 @@ def main():
     env.planner = planner
     args.out.mkdir(parents=True, exist_ok=True)
     scenario = json.loads(args.scenario.read_text()) if args.scenario else {}
-    rows = []
+    rows, route_logs = [], []
     for spec in subset[:: args.every][: args.limit]:
         planner.request_id = int(spec["request_id"])
         entry = scenario.get(str(spec["request_id"]), {})
         env.set_outages({int(k): float(v) for k, v in entry.get("outages", {}).items()})
+        env.route_log = []
+        planner.session_new_links = 0
+        planner.extra_note = entry.get("note", "")
         planner.operator_text = entry.get("text", args.operator_text)
         request = SessionRequest(spec["source"], spec["destination"], float(spec["request_time_s"]), float(spec["duration_s"]))
         result = env.run("llm", request)
@@ -97,10 +100,16 @@ def main():
                    duration_s=float(spec["duration_s"]))
         row["availability"] = max(0.0, 1.0 - result.interruption_s / row["duration_s"]) if result.setup_success else 0.0
         rows.append(row)
+        route_logs.append({"request_id": row["request_id"], "source": row["source"], "destination": row["destination"],
+                           "established_time_s": row["established_time_s"], "duration_s": row["duration_s"],
+                           "dynamic_setups": row["dynamic_setups"], "routes": env.route_log})
     with open(args.out / "sessions.csv", "w", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
         writer.writeheader()
         writer.writerows(rows)
+    with open(args.out / "routes.jsonl", "w") as handle:
+        for r in route_logs:
+            handle.write(json.dumps(r) + "\n")
     with open(args.out / "decisions.jsonl", "w") as handle:
         for d in planner.decisions:
             handle.write(json.dumps(d) + "\n")

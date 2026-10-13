@@ -88,6 +88,7 @@ class SessionEnvironment:
         self.outages: Dict[int, float] = {}
         self.planner.outages = self.outages
         self.outage_detection_s = 1.0
+        self.route_log: Optional[List[Dict]] = None
 
     def set_outages(self, outages: Dict[int, float]) -> None:
         """Satellites that go down at the given times without prior notice.
@@ -137,6 +138,8 @@ class SessionEnvironment:
         route: Route,
         time_s: float,
     ) -> None:
+        if self.route_log is not None:  # optional record of every established route (no effect on results)
+            self.route_log.append({"time_s": float(time_s), "satellites": [int(x) for x in route.satellites]})
         """Record a cap-free path cost against the physical straight-line lower bound."""
         length_km = self._path_length_km(request, route, time_s)
         source = GROUND_STATIONS[request.source_station].eci(

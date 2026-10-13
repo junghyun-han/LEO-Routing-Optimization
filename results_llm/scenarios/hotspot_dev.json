@@ -1,0 +1,1082 @@
+{
+ "0": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "20": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "40": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "60": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "80": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "100": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "120": {
+  "hotspot_region": "north_america_east",
+  "note": "Region box used by operations (north_america_east, '북미 동부'): sub-satellite latitude 25 to 50, longitude -90 to -60.",
+  "avoidable_whole_session": true,
+  "text": "북미 동부 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "140": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "160": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "180": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "200": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "220": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "240": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "260": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "280": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "300": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "320": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "340": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "360": {
+  "hotspot_region": "north_america_east",
+  "note": "Region box used by operations (north_america_east, '북미 동부'): sub-satellite latitude 25 to 50, longitude -90 to -60.",
+  "avoidable_whole_session": true,
+  "text": "북미 동부 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "380": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "400": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "420": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "440": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "460": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "480": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "500": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "520": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "540": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "560": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "580": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "600": {
+  "hotspot_region": "north_america_east",
+  "note": "Region box used by operations (north_america_east, '북미 동부'): sub-satellite latitude 25 to 50, longitude -90 to -60.",
+  "avoidable_whole_session": false,
+  "text": "북미 동부 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "620": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "640": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "660": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "680": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "700": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "720": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "740": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "760": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "780": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "800": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "820": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "840": {
+  "hotspot_region": "north_america_east",
+  "note": "Region box used by operations (north_america_east, '북미 동부'): sub-satellite latitude 25 to 50, longitude -90 to -60.",
+  "avoidable_whole_session": false,
+  "text": "북미 동부 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "860": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "880": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "900": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "920": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "940": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "960": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "980": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "1000": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "1020": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "1040": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "1060": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "1080": {
+  "hotspot_region": "north_america_east",
+  "note": "Region box used by operations (north_america_east, '북미 동부'): sub-satellite latitude 25 to 50, longitude -90 to -60.",
+  "avoidable_whole_session": false,
+  "text": "북미 동부 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "1100": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "1120": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "1140": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "1160": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "1180": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "1200": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "1220": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "1240": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "1260": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "1280": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "1300": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "1320": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": true,
+  "text": "동아시아 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "1340": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "1360": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "1380": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": true,
+  "text": "유럽 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "1400": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "1420": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "1440": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "1460": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "1480": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "1500": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "1520": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "1540": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "1560": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": true,
+  "text": "동아시아 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "1580": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "1600": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "1620": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": true,
+  "text": "유럽 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "1640": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "1660": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "1680": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "1700": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "1720": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "1740": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "1760": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "1780": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "1800": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": true,
+  "text": "동아시아 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "1820": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "1840": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "1860": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": false,
+  "text": "유럽 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "1880": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "1900": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "1920": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "1940": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "1960": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "1980": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "2000": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "2020": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "2040": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": true,
+  "text": "동아시아 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "2060": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "2080": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "2100": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": false,
+  "text": "유럽 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "2120": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "2140": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "2160": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "2180": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "2200": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "2220": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "2240": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "2260": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "2280": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": true,
+  "text": "동아시아 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "2300": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "2320": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "2340": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": false,
+  "text": "유럽 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "2360": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "2380": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "2400": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "2420": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": true,
+  "text": "지금 동아시아 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "2440": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": true,
+  "text": "동아시아 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "2460": {
+  "hotspot_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "avoidable_whole_session": true,
+  "text": "동남아시아 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "2480": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "2500": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "2520": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": true,
+  "text": "유럽 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "2540": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "2560": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": true,
+  "text": "유럽 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "2580": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": true,
+  "text": "동아시아 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "2600": {
+  "hotspot_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "avoidable_whole_session": true,
+  "text": "지금 동남아시아 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "2620": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": true,
+  "text": "유럽 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "2640": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "2660": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": true,
+  "text": "지금 동아시아 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "2680": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": true,
+  "text": "동아시아 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "2700": {
+  "hotspot_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "avoidable_whole_session": true,
+  "text": "동남아시아 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "2720": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "2740": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "2760": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": true,
+  "text": "유럽 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "2780": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "2800": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": true,
+  "text": "유럽 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "2820": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": true,
+  "text": "동아시아 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "2840": {
+  "hotspot_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "avoidable_whole_session": true,
+  "text": "지금 동남아시아 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "2860": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": true,
+  "text": "유럽 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "2880": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "2900": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": true,
+  "text": "지금 동아시아 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "2920": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": true,
+  "text": "동아시아 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "2940": {
+  "hotspot_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "avoidable_whole_session": true,
+  "text": "동남아시아 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "2960": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "2980": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "3000": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": true,
+  "text": "유럽 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "3020": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "3040": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": true,
+  "text": "유럽 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "3060": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": true,
+  "text": "동아시아 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "3080": {
+  "hotspot_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "avoidable_whole_session": true,
+  "text": "지금 동남아시아 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "3100": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": true,
+  "text": "유럽 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "3120": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "3140": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": false,
+  "text": "지금 동아시아 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "3160": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": false,
+  "text": "동아시아 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "3180": {
+  "hotspot_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "avoidable_whole_session": true,
+  "text": "동남아시아 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "3200": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "3220": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "3240": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": true,
+  "text": "유럽 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "3260": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": true,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "3280": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": true,
+  "text": "유럽 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "3300": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": false,
+  "text": "동아시아 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "3320": {
+  "hotspot_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "avoidable_whole_session": true,
+  "text": "지금 동남아시아 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "3340": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": true,
+  "text": "유럽 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "3360": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "북대서양 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "3380": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": false,
+  "text": "지금 동아시아 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "3400": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": false,
+  "text": "동아시아 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "3420": {
+  "hotspot_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "avoidable_whole_session": true,
+  "text": "동남아시아 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "3440": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "3460": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "3480": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": true,
+  "text": "유럽 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "3500": {
+  "hotspot_region": "north_atlantic",
+  "note": "Region box used by operations (north_atlantic, '북대서양'): sub-satellite latitude 30 to 60, longitude -60 to -10.",
+  "avoidable_whole_session": false,
+  "text": "지금 북대서양 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "3520": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": true,
+  "text": "유럽 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ },
+ "3540": {
+  "hotspot_region": "east_asia",
+  "note": "Region box used by operations (east_asia, '동아시아'): sub-satellite latitude 20 to 50, longitude 100 to 145.",
+  "avoidable_whole_session": false,
+  "text": "동아시아 상공 구간에 트래픽이 몰려 혼잡해. 가능하면 피해서 경로를 잡아 줘."
+ },
+ "3560": {
+  "hotspot_region": "southeast_asia",
+  "note": "Region box used by operations (southeast_asia, '동남아시아'): sub-satellite latitude -10 to 25, longitude 92 to 130.",
+  "avoidable_whole_session": true,
+  "text": "지금 동남아시아 쪽이 핫스팟이야. 꼭 필요한 경우가 아니면 지나가지 마."
+ },
+ "3580": {
+  "hotspot_region": "europe",
+  "note": "Region box used by operations (europe, '유럽'): sub-satellite latitude 35 to 60, longitude -10 to 40.",
+  "avoidable_whole_session": true,
+  "text": "유럽 구간 부하가 높아. 되도록 덜 거치게 해 줘."
+ }
+}

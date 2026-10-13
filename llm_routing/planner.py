@@ -35,6 +35,8 @@ class LLMPlanner(RoutePlanner):
         self.model, self.latlon_of, self.operator_text, self.hops = model, latlon_of, operator_text, hops
         self.decisions: List[Dict] = []
         self.request_id: Optional[int] = None
+        self.extra_note = ""  # scenario facts given with the operator text (e.g. region boxes)
+        self.session_new_links = 0  # links switched on by earlier decisions of this session
 
     def plan(self, method, source_station, destination_station, time_s, required_s, topology) -> Optional[Route]:
         if method != "llm":
@@ -46,7 +48,9 @@ class LLMPlanner(RoutePlanner):
         nodes = neighbourhood(graph, dijkstra.satellites, self.hops)
         positions = self.constellation.positions(time_s)
         prompt = (
-            (f"Operator conditions:\n{self.operator_text}\n\n" if self.operator_text else "")
+            (f"Operator conditions:\n{self.operator_text}\n"
+             + (f"{self.extra_note}\n" if self.extra_note else "")
+             + f"Links switched on so far in this session: {self.session_new_links}.\n\n" if self.operator_text else "")
             + f"Session {source_station} -> {destination_station}. Decision time {time_s:.0f} s. The route must stay "
             f"connected for the next {required_s:.0f} s (add 20 s if it switches any link on).\n"
             f"Ingress satellite {dijkstra.ingress}, egress satellite {dijkstra.egress}.\n"
@@ -59,6 +63,7 @@ class LLMPlanner(RoutePlanner):
         route, error, proposal, usage, extra = self._decide(prompt, graph, source_station, destination_station,
                                                             time_s, required_s, active)
         chosen = route if route is not None else dijkstra
+        self.session_new_links += len(chosen.new_dynamic_edges)
         self.decisions.append({
             "request_id": self.request_id, "time_s": time_s, "required_s": required_s, "valid": route is not None,
             "error": error, "changed": chosen.satellites != dijkstra.satellites, "dijkstra": list(dijkstra.satellites),
