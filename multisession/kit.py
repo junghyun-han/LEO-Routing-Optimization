@@ -57,7 +57,7 @@ class State:
         return p is None or self.load.get(canonical_edge(x, p), 0) == 0
 
     def search(self, sources: Dict[int, float], goals: Dict[int, float], need_s: float, allow_new: bool,
-               edge_cost: EdgeCost = default_cost) -> Optional[Tuple[List[int], Set[Edge]]]:
+               edge_cost: EdgeCost = default_cost, via: Optional[Set[int]] = None) -> Optional[Tuple[List[int], Set[Edge]]]:
         """Cheapest simple path from any source to any goal satellite.
 
         Only links with spare capacity and remaining contact >= ``need_s`` are
@@ -68,23 +68,25 @@ class State:
         it through dynamic links.  A neighbour already on the search-tree path
         is skipped, so routes are simple; with this path-dependent rule the
         search is a heuristic.  ``edge_cost`` must return a non-negative number
-        (``math.inf`` forbids the link).
+        (``math.inf`` forbids the link).  With ``via`` the route must pass a
+        satellite in that set (one more state bit: region reached yet).
         """
         snap = self.instance.snapshot
         cap = self.instance.capacity
-        dist: Dict[Tuple[int, bool], float] = {}
-        parent: Dict[Tuple[int, bool], Tuple[Tuple[int, bool], bool]] = {}
-        heap: List[Tuple[float, int, bool]] = []
+        dist: Dict[Tuple[int, bool, bool], float] = {}
+        parent: Dict[Tuple[int, bool, bool], Tuple[Tuple[int, bool, bool], bool]] = {}
+        heap: List[Tuple[float, int, bool, bool]] = []
         for s in sources:
-            dist[(s, False)] = 0.0
-            heapq.heappush(heap, (0.0, s, False))
+            reached = via is None or s in via
+            dist[(s, False, reached)] = 0.0
+            heapq.heappush(heap, (0.0, s, False, reached))
         goal = None
         while heap:
-            cost, u, entered_dyn = heapq.heappop(heap)
-            state = (u, entered_dyn)
+            cost, u, entered_dyn, reached = heapq.heappop(heap)
+            state = (u, entered_dyn, reached)
             if dist.get(state) != cost:
                 continue
-            if u in goals:
+            if u in goals and reached:
                 goal = state
                 break
             on_path = {u}
@@ -119,12 +121,12 @@ class State:
                 c = float(edge_cost(info))
                 if not c >= 0.0 or math.isinf(c):  # negative, NaN, or forbidden
                     continue
-                nxt = (v, via_dyn)
+                nxt = (v, via_dyn, reached or (via is not None and v in via))
                 cand = cost + c
                 if cand < dist.get(nxt, math.inf):
                     dist[nxt] = cand
                     parent[nxt] = (state, is_new)
-                    heapq.heappush(heap, (cand, v, via_dyn))
+                    heapq.heappush(heap, (cand, v, via_dyn, nxt[2]))
         if goal is None:
             return None
         path = [goal[0]]

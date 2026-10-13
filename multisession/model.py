@@ -87,10 +87,11 @@ class Instance:
     sessions: Tuple[Session, ...]
     antennas: int  # A: satellites each ground station tracks at once
     capacity: int  # kappa: sessions one ISL carries at once
+    antenna_overrides: Dict[str, int] = field(default_factory=dict)  # per-station A (e.g. an antenna outage)
 
     def antenna_sats(self, station: str) -> Tuple[Tuple[int, float], ...]:
         """The A latest-ending visible satellites (A=1 is the v3 access rule)."""
-        return self.snapshot.access.get(station, ())[: self.antennas]
+        return self.snapshot.access.get(station, ())[: self.antenna_overrides.get(station, self.antennas)]
 
     def usable_access(self, station: str, required_s: float) -> Dict[int, float]:
         return {s: g for s, g in self.antenna_sats(station) if g + TOL >= required_s}
@@ -98,7 +99,9 @@ class Instance:
 
 @dataclass
 class Solution:
-    routes: Dict[int, List[int]]  # session index -> satellites from ingress to egress
+    # session index -> satellites from ingress to egress.  A route is a walk: it may pass a satellite
+    # twice (e.g. out to a required region and back); every traversal of a link counts toward capacity.
+    routes: Dict[int, List[int]]
     final_dynamic: Set[Edge]  # M: ACTIVE dynamic links after the decision
     runtime_s: float = 0.0
 
@@ -133,8 +136,6 @@ def verify(instance: Instance, solution: Solution) -> List[str]:
         if not path:
             problems.append(f"session {k}: empty route")
             continue
-        if len(set(path)) != len(path):
-            problems.append(f"session {k}: route revisits a satellite")
         edges = route_edges(path)
         uses_new = any(e in new_links for e in edges)
         need = (snap.setup_s if uses_new else 0.0) + session.duration_s

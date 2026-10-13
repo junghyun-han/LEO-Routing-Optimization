@@ -56,7 +56,8 @@ def test_verifier_catches_each_violation():
     assert any("capacity" in p for p in verify(inst, Solution({0: [0, 4, 5, 6, 7], 1: [0, 4, 5, 6, 7]}, {(0, 4)})))
     assert any("not ACTIVE" in p for p in verify(inst, Solution({0: [0, 1, 2, 3, 7]}, {(0, 4)})))
     assert any("two dynamic links" in p for p in verify(inst, Solution({}, {(0, 4), (1, 5), (3, 5)})))
-    assert any("revisits" in p for p in verify(inst, Solution({0: [0, 1, 0, 4, 5, 6, 7]}, {(0, 4)})))
+    # a walk may revisit a satellite, but each traversal of a link uses capacity
+    assert any("capacity" in p for p in verify(inst, Solution({0: [0, 1, 0, 4, 5, 6, 7]}, {(0, 4)})))
     late = toy_instance(1, gsl_t=40.0)
     assert any("ends before" in p for p in verify(late, Solution({0: [0, 1, 2, 3, 7]}, {(0, 4), (3, 7)})))
     short = toy_instance(1, duration=30.0)
