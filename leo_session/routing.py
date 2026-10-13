@@ -118,6 +118,10 @@ class RoutePlanner:
         self.max_relay_actions = 128 if max_relay_actions is None else int(max_relay_actions)
         if self.max_relay_actions < 1:
             raise ValueError("max_relay_actions must be positive")
+        # Unannounced satellite outages {satellite: time}.  From that time the
+        # satellite's links disappear from the graph; before it, every routing
+        # method sees the satellite as normal.  Empty means v3 behaviour.
+        self.outages: Dict[int, float] = {}
         self._persistent_adj: Dict[int, List[int]] = {}
         for u, v in self.persistent:
             self._persistent_adj.setdefault(u, []).append(v)
@@ -128,12 +132,18 @@ class RoutePlanner:
     ) -> Dict[int, List[Tuple[int, bool, bool, float]]]:
         """neighbor -> (node, is_dynamic, is_active, remaining_s)."""
         graph: Dict[int, List[Tuple[int, bool, bool, float]]] = {}
+        down = {s for s, at in self.outages.items() if at <= time_s}
         for u, neighbors in self._persistent_adj.items():
+            if u in down:
+                continue
             for v in neighbors:
-                graph.setdefault(u, []).append((v, False, True, math.inf))
+                if v not in down:
+                    graph.setdefault(u, []).append((v, False, True, math.inf))
         active_dynamic = {canonical_edge(*edge) for edge in topology.dynamic}
 
         for u, v, end_s in self.trace.active_edges(time_s):
+            if u in down or v in down:
+                continue
             edge = canonical_edge(u, v)
             active = edge in active_dynamic
             remaining = max(0.0, float(end_s) - float(time_s))
@@ -153,6 +163,8 @@ class RoutePlanner:
         source_access = self.ground_trace.selected_access(source_station, time_s)
         destination_access = self.ground_trace.selected_access(destination_station, time_s)
         if source_access is None or destination_access is None:
+            return None
+        if self.outages.get(source_access, math.inf) <= time_s or self.outages.get(destination_access, math.inf) <= time_s:
             return None
         sources = [source_access]
         destinations = {destination_access}
@@ -252,6 +264,8 @@ class RoutePlanner:
         source = self.ground_trace.selected_access(source_station, time_s)
         destination = self.ground_trace.selected_access(destination_station, time_s)
         if source is None or destination is None:
+            return None
+        if self.outages.get(source, math.inf) <= time_s or self.outages.get(destination, math.inf) <= time_s:
             return None
         graph = self._graph(time_s, topology)
         active_dynamic = {canonical_edge(*edge) for edge in topology.dynamic}

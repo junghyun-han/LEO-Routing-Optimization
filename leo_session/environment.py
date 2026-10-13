@@ -52,6 +52,7 @@ class SessionResult:
     total_pat_time_s: float = 0.0
     established_time_s: float = math.nan
     reason: str = ""
+    outage_hits: int = 0  # unannounced satellite outages that broke the active route
 
 
 class SessionEnvironment:
@@ -83,6 +84,27 @@ class SessionEnvironment:
             isl_trace, ground_trace, self.persistent, config
         )
         self._topology_cache: Dict[float, ActiveTopology] = {}
+        # Unannounced outages (see set_outages).  Shared with the planner.
+        self.outages: Dict[int, float] = {}
+        self.planner.outages = self.outages
+        self.outage_detection_s = 1.0
+
+    def set_outages(self, outages: Dict[int, float]) -> None:
+        """Satellites that go down at the given times without prior notice.
+
+        Routing methods see the satellite as normal until its outage time and
+        without it afterwards.  The environment does not schedule a proactive
+        reroute for it: a route through the satellite breaks at that time, the
+        break is detected after ``outage_detection_s`` (counted as interruption),
+        and a replacement is planned then.  Predictable v3 events (contact ends)
+        are unchanged.  An empty dict reproduces v3 exactly.
+        """
+        self.outages.clear()
+        self.outages.update({int(k): float(v) for k, v in outages.items()})
+        self.planner.outages = self.outages
+
+    def _outage_break(self, route: Route) -> float:
+        return min((self.outages[s] for s in route.satellites if s in self.outages), default=math.inf)
 
     def _initial_topology(self, time_s: float) -> ActiveTopology:
         key = round(float(time_s), 9)
@@ -176,6 +198,8 @@ class SessionEnvironment:
         return float(time_s) + min(remaining, default=math.inf)
 
     def _route_alive(self, request: SessionRequest, route: Route, time_s: float) -> bool:
+        if self._outage_break(route) <= time_s:
+            return False
         if self.ground_trace.remaining_s(request.source_station, route.ingress, time_s) <= 0.0:
             return False
         if self.ground_trace.remaining_s(request.destination_station, route.egress, time_s) <= 0.0:
@@ -204,6 +228,8 @@ class SessionEnvironment:
             return False, delay, False, len(new_edges)
         if any(self.isl_trace.remaining_s(*edge, time_s) + 1.0e-9 < delay for edge in new_edges):
             return False, delay, False, len(new_edges)
+        if any(self.outages.get(node, math.inf) < finish - 1.0e-9 for edge in new_edges for node in edge):
+            return False, delay, False, len(new_edges)
 
         released: Set[Edge] = set()
         for u, v in new_edges:
@@ -216,6 +242,8 @@ class SessionEnvironment:
         if previous_route is not None and released & self._dynamic_edges(previous_route):
             continuity = False
         if previous_route is not None and self._route_expiry(request, previous_route, time_s) < finish - 1.0e-9:
+            continuity = False
+        if previous_route is not None and self._outage_break(previous_route) < finish - 1.0e-9:
             continuity = False
 
         # break-before-make: release occupied terminals at acquisition start.
@@ -235,6 +263,41 @@ class SessionEnvironment:
         if not self._dynamic_edges(route).issubset(active_dynamic):
             return False, delay, continuity, len(new_edges)
         return True, delay, continuity, len(new_edges)
+
+    def _outage_limit(self, expiry: float, current_time: float, target_end: float) -> float:
+        """An outage matters if it hits before the route ends or is proactively replaced."""
+        if expiry >= target_end - 1.0e-9:
+            return target_end
+        return max(current_time, expiry - self.config.dynamic_setup_s)
+
+    def _handle_outage(self, result, request, route, topology, broken_at, target_end, plan_fn):
+        """The route broke at ``broken_at`` (unannounced outage): detect, replan, re-establish.
+
+        Returns (new route, time it carries the session) or None when the session ends here.
+        """
+        result.outage_hits += 1
+        detect = broken_at + self.outage_detection_s
+        result.interruption_s += min(self.outage_detection_s, max(0.0, target_end - broken_at))
+        if detect >= target_end - 1.0e-9:
+            result.reason = "outage near session end"
+            return None
+        candidate = plan_fn(detect, target_end - detect)
+        if candidate is None:
+            result.interruption_s += target_end - detect
+            result.reason = "no route after outage"
+            return None
+        ok, setup_delay, _continuity, setups = self._activate(request, topology, candidate, detect, route)
+        result.dynamic_setups += setups
+        result.total_pat_time_s += setup_delay
+        if not ok:
+            result.interruption_s += target_end - detect
+            result.reason = "setup after outage failed"
+            return None
+        result.interruption_s += setup_delay  # the broken route carries nothing meanwhile
+        result.reconfigurations += 1
+        current = detect + setup_delay
+        self._record_route_quality(result, request, candidate, current)
+        return candidate, current
 
     def run(self, method: str, request: SessionRequest) -> SessionResult:
         result = SessionResult(method=method)
@@ -298,6 +361,18 @@ class SessionEnvironment:
         # routing from remaining-contact-aware routing.
         for _ in range(128):
             expiry = self._route_expiry(request, route, current_time)
+            replacement_method = "raw" if method == "prp" else method
+            broken = self._outage_break(route)
+            if broken < self._outage_limit(expiry, current_time, target_end) - 1.0e-9:
+                handled = self._handle_outage(
+                    result, request, route, topology, max(current_time, broken), target_end,
+                    lambda t, req: self.planner.plan(
+                        replacement_method, request.source_station, request.destination_station, t, req, topology),
+                )
+                if handled is None:
+                    return result
+                route, current_time = handled
+                continue
             if expiry >= target_end - 1.0e-9:
                 result.completion = result.interruption_s <= 1.0e-9
                 result.reason = "completed" if result.completion else "completed with interruption"
@@ -458,6 +533,18 @@ class SessionEnvironment:
 
         for _ in range(128):
             expiry = self._route_expiry(request, route, current_time)
+            broken = self._outage_break(route)
+            if broken < self._outage_limit(expiry, current_time, target_end) - 1.0e-9:
+                previous = route
+                handled = self._handle_outage(
+                    result, request, route, topology, max(current_time, broken), target_end,
+                    lambda t, req: plan_at(t, req, previous)[0],
+                )
+                if handled is None:
+                    return result
+                route, current_time = handled
+                active_token, active_start, active_interruption, active_new_links = None, current_time, 0.0, 0
+                continue
             if expiry >= target_end - 1.0e-9:
                 result.completion = result.interruption_s <= 1.0e-9
                 route_outcome(
