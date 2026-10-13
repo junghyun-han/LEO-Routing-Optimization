@@ -99,7 +99,7 @@ def agent_stats(path: Path, dijkstra: pd.DataFrame, scenario=None) -> dict:
     tin, tout = sum(x["prompt_tokens"] for x in d), sum(x["completion_tokens"] for x in d)
     price = PRICES.get(model, (float("nan"), float("nan")))
     extra = {}
-    if scenario:
+    if scenario and all("satellite" in v for v in scenario.values()):  # maintenance: announced satellite
         first = {}
         for x in d:
             first.setdefault(x["request_id"], x)
