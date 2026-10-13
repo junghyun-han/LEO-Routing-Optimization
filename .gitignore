@@ -5,3 +5,4 @@ __pycache__/
 .DS_Store
 results_cpu/
 results_multisession/*.log
+.env

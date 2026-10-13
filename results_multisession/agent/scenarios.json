@@ -1,0 +1,1073 @@
+[
+ {
+  "id": 0,
+  "t0": 155.43105540665076,
+  "antennas": 2,
+  "capacity": 1,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "failure",
+   "hotspot",
+   "reconfig"
+  ],
+  "text": "지금 뉴욕에서 런던, 이스탄불, 하노이로 가는 세션 요청이 들어와 있어. 위성 401, 737, 739가 고장 났어. 북대서양 상공은 트래픽이 몰려서 혼잡하니까 가능하면 피해 줘. 지금은 링크 재설정을 하지 마. 조건 맞춰서 경로 잡아 줘.",
+  "truth": {
+   "failed_satellites": [
+    401,
+    737,
+    739
+   ],
+   "avoid_regions": [],
+   "hotspot_regions": [
+    "north_atlantic"
+   ],
+   "via": {},
+   "antennas": {},
+   "max_new_links": 0,
+   "min_admitted": {},
+   "priority": [],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 1,
+  "t0": 442.3806961573907,
+  "antennas": 4,
+  "capacity": 1,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "region",
+   "traffic"
+  ],
+  "text": "새 세션 요청 묶음이 들어왔어. 보안 정책상 아프리카 상공 통과는 금지야. 하노이에는 최소 4개 세션은 꼭 보장해 줘. 이 조건으로 라우팅해 줘.",
+  "truth": {
+   "failed_satellites": [],
+   "avoid_regions": [
+    "africa"
+   ],
+   "hotspot_regions": [],
+   "via": {},
+   "antennas": {},
+   "max_new_links": null,
+   "min_admitted": {
+    "hanoi": 4
+   },
+   "priority": [],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 2,
+  "t0": 729.3303369081307,
+  "antennas": 2,
+  "capacity": 2,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "ground",
+   "region"
+  ],
+  "text": "새 세션 요청 묶음이 들어왔어. 이스탄불행 세션은 중동 상공을 반드시 거쳐서 보내야 해. 뉴욕 지상국 안테나가 강우 때문에 1개만 쓸 수 있어. 조건 맞춰서 경로 잡아 줘.",
+  "truth": {
+   "failed_satellites": [],
+   "avoid_regions": [],
+   "hotspot_regions": [],
+   "via": {
+    "istanbul": "middle_east"
+   },
+   "antennas": {
+    "new_york": 1
+   },
+   "max_new_links": null,
+   "min_admitted": {},
+   "priority": [],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 3,
+  "t0": 1016.2799776588704,
+  "antennas": 4,
+  "capacity": 2,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "failure",
+   "region",
+   "traffic"
+  ],
+  "text": "지금 뉴욕에서 런던, 이스탄불, 하노이로 가는 세션 요청이 들어와 있어. 런던행 세션은 지중해 상공을 반드시 거쳐서 보내야 해. 1184, 1304, 1319번 위성이 응답이 없어서 쓸 수 없어. 런던에는 최소 2개 세션은 꼭 보장해 줘. 조건 맞춰서 경로 잡아 줘.",
+  "truth": {
+   "failed_satellites": [
+    1184,
+    1304,
+    1319
+   ],
+   "avoid_regions": [],
+   "hotspot_regions": [],
+   "via": {
+    "london": "mediterranean"
+   },
+   "antennas": {},
+   "max_new_links": null,
+   "min_admitted": {
+    "london": 2
+   },
+   "priority": [],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 4,
+  "t0": 1303.2296184096106,
+  "antennas": 2,
+  "capacity": 1,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "ground",
+   "region"
+  ],
+  "text": "뉴욕발 세션들(런던, 이스탄불, 하노이행)을 배정해야 해. 런던 게이트웨이는 지금 안테나 1개만 가동 중이야. 하노이로 가는 트래픽은 중동 구간을 경유하도록 해 줘. 이 조건으로 라우팅해 줘.",
+  "truth": {
+   "failed_satellites": [],
+   "avoid_regions": [],
+   "hotspot_regions": [],
+   "via": {
+    "hanoi": "middle_east"
+   },
+   "antennas": {
+    "london": 1
+   },
+   "max_new_links": null,
+   "min_admitted": {},
+   "priority": [],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 5,
+  "t0": 1590.1792591603505,
+  "antennas": 4,
+  "capacity": 1,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "failure",
+   "ground"
+  ],
+  "text": "새 세션 요청 묶음이 들어왔어. 이스탄불 지상국 안테나가 강우 때문에 2개만 쓸 수 있어. 위성 527, 1402, 1405가 고장 났어. 조건 맞춰서 경로 잡아 줘.",
+  "truth": {
+   "failed_satellites": [
+    527,
+    1402,
+    1405
+   ],
+   "avoid_regions": [],
+   "hotspot_regions": [],
+   "via": {},
+   "antennas": {
+    "istanbul": 2
+   },
+   "max_new_links": null,
+   "min_admitted": {},
+   "priority": [],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 6,
+  "t0": 1877.1288999110905,
+  "antennas": 2,
+  "capacity": 2,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "hotspot",
+   "reconfig"
+  ],
+  "text": "뉴욕발 세션들(런던, 이스탄불, 하노이행)을 배정해야 해. 북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘. 세션을 조금 덜 받더라도 링크 재설정은 최소로 해. 조건 맞춰서 경로 잡아 줘.",
+  "truth": {
+   "failed_satellites": [],
+   "avoid_regions": [],
+   "hotspot_regions": [
+    "north_atlantic"
+   ],
+   "via": {},
+   "antennas": {},
+   "max_new_links": null,
+   "min_admitted": {},
+   "priority": [],
+   "objective": [
+    "new_links",
+    "admitted",
+    "hotspot",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 7,
+  "t0": 2164.07854066183,
+  "antennas": 4,
+  "capacity": 2,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "failure",
+   "traffic"
+  ],
+  "text": "지금 뉴욕에서 런던, 이스탄불, 하노이로 가는 세션 요청이 들어와 있어. 지금 512, 1232 위성은 장애 상태야. 런던 세션을 먼저, 그다음 이스탄불 순서로 우선해 줘. 조건 맞춰서 경로 잡아 줘.",
+  "truth": {
+   "failed_satellites": [
+    512,
+    1232
+   ],
+   "avoid_regions": [],
+   "hotspot_regions": [],
+   "via": {},
+   "antennas": {},
+   "max_new_links": null,
+   "min_admitted": {},
+   "priority": [
+    "london",
+    "istanbul"
+   ],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 8,
+  "t0": 2451.02818141257,
+  "antennas": 2,
+  "capacity": 1,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "ground",
+   "hotspot",
+   "reconfig",
+   "traffic"
+  ],
+  "text": "새 세션 요청 묶음이 들어왔어. 이스탄불 지상국 안테나가 강우 때문에 1개만 쓸 수 있어. 링크 재설정은 2번까지만 허용돼. 하노이행은 적어도 2개는 받아야 해. 북대서양 쪽이 지금 핫스팟이야. 꼭 필요할 때만 지나가. 반영해서 배정해 줘.",
+  "truth": {
+   "failed_satellites": [],
+   "avoid_regions": [],
+   "hotspot_regions": [
+    "north_atlantic"
+   ],
+   "via": {},
+   "antennas": {
+    "istanbul": 1
+   },
+   "max_new_links": 2,
+   "min_admitted": {
+    "hanoi": 2
+   },
+   "priority": [],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 9,
+  "t0": 2737.97782216331,
+  "antennas": 4,
+  "capacity": 1,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "failure",
+   "ground",
+   "reconfig"
+  ],
+  "text": "새 세션 요청 묶음이 들어왔어. 세션을 조금 덜 받더라도 링크 재설정은 최소로 해. 하노이 쪽 안테나 일부가 다운돼서 2개만 남았어. 위성 471, 480, 574가 고장 났어. 이 조건으로 라우팅해 줘.",
+  "truth": {
+   "failed_satellites": [
+    471,
+    480,
+    574
+   ],
+   "avoid_regions": [],
+   "hotspot_regions": [],
+   "via": {},
+   "antennas": {
+    "hanoi": 2
+   },
+   "max_new_links": null,
+   "min_admitted": {},
+   "priority": [],
+   "objective": [
+    "new_links",
+    "admitted",
+    "hotspot",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 10,
+  "t0": 3024.9274629140496,
+  "antennas": 2,
+  "capacity": 2,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "ground",
+   "hotspot",
+   "reconfig",
+   "traffic"
+  ],
+  "text": "지금 뉴욕에서 런던, 이스탄불, 하노이로 가는 세션 요청이 들어와 있어. 런던에는 최소 2개 세션은 꼭 보장해 줘. 북대서양 쪽이 지금 핫스팟이야. 꼭 필요할 때만 지나가. 새 링크는 3개 넘게 만들지 마. 이스탄불 게이트웨이는 지금 안테나 1개만 가동 중이야. 이 조건으로 라우팅해 줘.",
+  "truth": {
+   "failed_satellites": [],
+   "avoid_regions": [],
+   "hotspot_regions": [
+    "north_atlantic"
+   ],
+   "via": {},
+   "antennas": {
+    "istanbul": 1
+   },
+   "max_new_links": 3,
+   "min_admitted": {
+    "london": 2
+   },
+   "priority": [],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 11,
+  "t0": 3311.8771036647895,
+  "antennas": 4,
+  "capacity": 2,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "reconfig",
+   "region",
+   "traffic"
+  ],
+  "text": "지금 뉴욕에서 런던, 이스탄불, 하노이로 가는 세션 요청이 들어와 있어. 하노이행을 제일 먼저 처리해 줘. 지금은 링크 재설정을 하지 마. 이스탄불로 가는 트래픽은 중동 구간을 경유하도록 해 줘. 이 조건으로 라우팅해 줘.",
+  "truth": {
+   "failed_satellites": [],
+   "avoid_regions": [],
+   "hotspot_regions": [],
+   "via": {
+    "istanbul": "middle_east"
+   },
+   "antennas": {},
+   "max_new_links": 0,
+   "min_admitted": {},
+   "priority": [
+    "hanoi"
+   ],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 12,
+  "t0": 3598.8267444155294,
+  "antennas": 2,
+  "capacity": 1,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "failure",
+   "reconfig",
+   "region",
+   "traffic"
+  ],
+  "text": "뉴욕발 세션들(런던, 이스탄불, 하노이행)을 배정해야 해. 이스탄불 세션은 아프리카 위를 지나가는 경로만 허용돼. 하노이행은 적어도 2개는 받아야 해. 링크 재설정은 1번까지만 허용돼. 위성 1132가 고장 났어. 조건 맞춰서 경로 잡아 줘.",
+  "truth": {
+   "failed_satellites": [
+    1132
+   ],
+   "avoid_regions": [],
+   "hotspot_regions": [],
+   "via": {
+    "istanbul": "africa"
+   },
+   "antennas": {},
+   "max_new_links": 1,
+   "min_admitted": {
+    "hanoi": 2
+   },
+   "priority": [],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 13,
+  "t0": 3885.7763851662694,
+  "antennas": 4,
+  "capacity": 1,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "failure",
+   "hotspot",
+   "reconfig",
+   "traffic"
+  ],
+  "text": "뉴욕발 세션들(런던, 이스탄불, 하노이행)을 배정해야 해. 새 링크는 2개 넘게 만들지 마. 지금 1013, 1022 위성은 장애 상태야. 이스탄불 세션을 최우선으로 받아 줘. 유럽 쪽이 지금 핫스팟이야. 꼭 필요할 때만 지나가. 반영해서 배정해 줘.",
+  "truth": {
+   "failed_satellites": [
+    1013,
+    1022
+   ],
+   "avoid_regions": [],
+   "hotspot_regions": [
+    "europe"
+   ],
+   "via": {},
+   "antennas": {},
+   "max_new_links": 2,
+   "min_admitted": {},
+   "priority": [
+    "istanbul"
+   ],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 14,
+  "t0": 4172.72602591701,
+  "antennas": 2,
+  "capacity": 2,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "failure",
+   "ground",
+   "hotspot"
+  ],
+  "text": "뉴욕발 세션들(런던, 이스탄불, 하노이행)을 배정해야 해. 지금 1211 위성은 장애 상태야. 유럽 상공은 트래픽이 몰려서 혼잡하니까 가능하면 피해 줘. 이스탄불 지상국 안테나가 강우 때문에 1개만 쓸 수 있어. 반영해서 배정해 줘.",
+  "truth": {
+   "failed_satellites": [
+    1211
+   ],
+   "avoid_regions": [],
+   "hotspot_regions": [
+    "europe"
+   ],
+   "via": {},
+   "antennas": {
+    "istanbul": 1
+   },
+   "max_new_links": null,
+   "min_admitted": {},
+   "priority": [],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 15,
+  "t0": 4459.675666667749,
+  "antennas": 4,
+  "capacity": 2,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "failure",
+   "ground",
+   "reconfig",
+   "region"
+  ],
+  "text": "지금 뉴욕에서 런던, 이스탄불, 하노이로 가는 세션 요청이 들어와 있어. 새 링크는 3개 넘게 만들지 마. 보안 정책상 남아시아 상공 통과는 금지야. 위성 1271가 고장 났어. 이스탄불 지상국 안테나가 강우 때문에 2개만 쓸 수 있어. 이 조건으로 라우팅해 줘.",
+  "truth": {
+   "failed_satellites": [
+    1271
+   ],
+   "avoid_regions": [
+    "south_asia"
+   ],
+   "hotspot_regions": [],
+   "via": {},
+   "antennas": {
+    "istanbul": 2
+   },
+   "max_new_links": 3,
+   "min_admitted": {},
+   "priority": [],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 16,
+  "t0": 4746.62530741849,
+  "antennas": 2,
+  "capacity": 1,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "hotspot",
+   "traffic"
+  ],
+  "text": "지금 뉴욕에서 런던, 이스탄불, 하노이로 가는 세션 요청이 들어와 있어. 이스탄불행은 적어도 3개는 받아야 해. 북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘. 조건 맞춰서 경로 잡아 줘.",
+  "truth": {
+   "failed_satellites": [],
+   "avoid_regions": [],
+   "hotspot_regions": [
+    "north_atlantic"
+   ],
+   "via": {},
+   "antennas": {},
+   "max_new_links": null,
+   "min_admitted": {
+    "istanbul": 3
+   },
+   "priority": [],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 17,
+  "t0": 5033.574948169229,
+  "antennas": 4,
+  "capacity": 1,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "hotspot",
+   "reconfig"
+  ],
+  "text": "새 세션 요청 묶음이 들어왔어. 링크 재설정은 1번까지만 허용돼. 북대서양 쪽이 지금 핫스팟이야. 꼭 필요할 때만 지나가. 조건 맞춰서 경로 잡아 줘.",
+  "truth": {
+   "failed_satellites": [],
+   "avoid_regions": [],
+   "hotspot_regions": [
+    "north_atlantic"
+   ],
+   "via": {},
+   "antennas": {},
+   "max_new_links": 1,
+   "min_admitted": {},
+   "priority": [],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 18,
+  "t0": 5320.52458891997,
+  "antennas": 2,
+  "capacity": 2,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "hotspot",
+   "reconfig",
+   "region",
+   "traffic"
+  ],
+  "text": "지금 뉴욕에서 런던, 이스탄불, 하노이로 가는 세션 요청이 들어와 있어. 링크 재설정은 1번까지만 허용돼. 인도양 위로는 어떤 세션도 지나가지 않게 해. 북대서양 상공은 트래픽이 몰려서 혼잡하니까 가능하면 피해 줘. 이스탄불 세션을 먼저, 그다음 런던 순서로 우선해 줘. 반영해서 배정해 줘.",
+  "truth": {
+   "failed_satellites": [],
+   "avoid_regions": [
+    "indian_ocean"
+   ],
+   "hotspot_regions": [
+    "north_atlantic"
+   ],
+   "via": {},
+   "antennas": {},
+   "max_new_links": 1,
+   "min_admitted": {},
+   "priority": [
+    "istanbul",
+    "london"
+   ],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 19,
+  "t0": 5607.474229670709,
+  "antennas": 4,
+  "capacity": 2,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "failure",
+   "ground",
+   "reconfig",
+   "traffic"
+  ],
+  "text": "뉴욕발 세션들(런던, 이스탄불, 하노이행)을 배정해야 해. 재설정을 줄이는 게 세션을 더 받는 것보다 중요해. 이스탄불에는 최소 3개 세션은 꼭 보장해 줘. 지금 618, 681 위성은 장애 상태야. 뉴욕 쪽 안테나 일부가 다운돼서 2개만 남았어. 반영해서 배정해 줘.",
+  "truth": {
+   "failed_satellites": [
+    618,
+    681
+   ],
+   "avoid_regions": [],
+   "hotspot_regions": [],
+   "via": {},
+   "antennas": {
+    "new_york": 2
+   },
+   "max_new_links": null,
+   "min_admitted": {
+    "istanbul": 3
+   },
+   "priority": [],
+   "objective": [
+    "new_links",
+    "admitted",
+    "hotspot",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 20,
+  "t0": 155.43105540665076,
+  "antennas": 2,
+  "capacity": 1,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "failure",
+   "region",
+   "traffic"
+  ],
+  "text": "뉴욕발 세션들(런던, 이스탄불, 하노이행)을 배정해야 해. 위성 940, 1129, 1342가 고장 났어. 이스탄불 세션을 먼저, 그다음 하노이 순서로 우선해 줘. 런던행 세션은 유럽 상공을 반드시 거쳐서 보내야 해. 반영해서 배정해 줘.",
+  "truth": {
+   "failed_satellites": [
+    940,
+    1129,
+    1342
+   ],
+   "avoid_regions": [],
+   "hotspot_regions": [],
+   "via": {
+    "london": "europe"
+   },
+   "antennas": {},
+   "max_new_links": null,
+   "min_admitted": {},
+   "priority": [
+    "istanbul",
+    "hanoi"
+   ],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 21,
+  "t0": 442.3806961573907,
+  "antennas": 4,
+  "capacity": 1,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "failure",
+   "ground",
+   "reconfig",
+   "region"
+  ],
+  "text": "뉴욕발 세션들(런던, 이스탄불, 하노이행)을 배정해야 해. 하노이 게이트웨이는 지금 안테나 2개만 가동 중이야. 재설정을 줄이는 게 세션을 더 받는 것보다 중요해. 규제 때문에 아프리카 상공으로는 절대 보내면 안 돼. 위성 796, 1236가 고장 났어. 이 조건으로 라우팅해 줘.",
+  "truth": {
+   "failed_satellites": [
+    796,
+    1236
+   ],
+   "avoid_regions": [
+    "africa"
+   ],
+   "hotspot_regions": [],
+   "via": {},
+   "antennas": {
+    "hanoi": 2
+   },
+   "max_new_links": null,
+   "min_admitted": {},
+   "priority": [],
+   "objective": [
+    "new_links",
+    "admitted",
+    "hotspot",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 22,
+  "t0": 729.3303369081307,
+  "antennas": 2,
+  "capacity": 2,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "failure",
+   "ground",
+   "region"
+  ],
+  "text": "뉴욕발 세션들(런던, 이스탄불, 하노이행)을 배정해야 해. 런던 쪽 안테나 일부가 다운돼서 1개만 남았어. 519, 990번 위성이 응답이 없어서 쓸 수 없어. 런던로 가는 트래픽은 북대서양 구간을 경유하도록 해 줘. 조건 맞춰서 경로 잡아 줘.",
+  "truth": {
+   "failed_satellites": [
+    519,
+    990
+   ],
+   "avoid_regions": [],
+   "hotspot_regions": [],
+   "via": {
+    "london": "north_atlantic"
+   },
+   "antennas": {
+    "london": 1
+   },
+   "max_new_links": null,
+   "min_admitted": {},
+   "priority": [],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 23,
+  "t0": 1016.2799776588704,
+  "antennas": 4,
+  "capacity": 2,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "ground",
+   "hotspot"
+  ],
+  "text": "뉴욕발 세션들(런던, 이스탄불, 하노이행)을 배정해야 해. 뉴욕 쪽 안테나 일부가 다운돼서 3개만 남았어. 북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘. 반영해서 배정해 줘.",
+  "truth": {
+   "failed_satellites": [],
+   "avoid_regions": [],
+   "hotspot_regions": [
+    "north_atlantic"
+   ],
+   "via": {},
+   "antennas": {
+    "new_york": 3
+   },
+   "max_new_links": null,
+   "min_admitted": {},
+   "priority": [],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 24,
+  "t0": 1303.2296184096106,
+  "antennas": 2,
+  "capacity": 1,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "hotspot",
+   "reconfig",
+   "traffic"
+  ],
+  "text": "새 세션 요청 묶음이 들어왔어. 런던행을 제일 먼저 처리해 줘. 지금은 링크 재설정을 하지 마. 유럽 쪽이 지금 핫스팟이야. 꼭 필요할 때만 지나가. 이 조건으로 라우팅해 줘.",
+  "truth": {
+   "failed_satellites": [],
+   "avoid_regions": [],
+   "hotspot_regions": [
+    "europe"
+   ],
+   "via": {},
+   "antennas": {},
+   "max_new_links": 0,
+   "min_admitted": {},
+   "priority": [
+    "london"
+   ],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 25,
+  "t0": 1590.1792591603505,
+  "antennas": 4,
+  "capacity": 1,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "failure",
+   "hotspot",
+   "region",
+   "traffic"
+  ],
+  "text": "새 세션 요청 묶음이 들어왔어. 런던행 세션은 북대서양 상공을 반드시 거쳐서 보내야 해. 유럽 구간 부하가 높아. 되도록 덜 거치게 해 줘. 하노이 세션을 먼저, 그다음 런던 순서로 우선해 줘. 위성 536가 고장 났어. 조건 맞춰서 경로 잡아 줘.",
+  "truth": {
+   "failed_satellites": [
+    536
+   ],
+   "avoid_regions": [],
+   "hotspot_regions": [
+    "europe"
+   ],
+   "via": {
+    "london": "north_atlantic"
+   },
+   "antennas": {},
+   "max_new_links": null,
+   "min_admitted": {},
+   "priority": [
+    "hanoi",
+    "london"
+   ],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 26,
+  "t0": 1877.1288999110905,
+  "antennas": 2,
+  "capacity": 2,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "ground",
+   "hotspot",
+   "reconfig",
+   "region"
+  ],
+  "text": "새 세션 요청 묶음이 들어왔어. 이스탄불 쪽 안테나 일부가 다운돼서 1개만 남았어. 이스탄불행 세션은 아프리카 상공을 반드시 거쳐서 보내야 해. 지금은 링크 재설정을 하지 마. 북대서양 구간 부하가 높아. 되도록 덜 거치게 해 줘. 조건 맞춰서 경로 잡아 줘.",
+  "truth": {
+   "failed_satellites": [],
+   "avoid_regions": [],
+   "hotspot_regions": [
+    "north_atlantic"
+   ],
+   "via": {
+    "istanbul": "africa"
+   },
+   "antennas": {
+    "istanbul": 1
+   },
+   "max_new_links": 0,
+   "min_admitted": {},
+   "priority": [],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 27,
+  "t0": 2164.07854066183,
+  "antennas": 4,
+  "capacity": 2,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "failure",
+   "ground",
+   "hotspot",
+   "traffic"
+  ],
+  "text": "뉴욕발 세션들(런던, 이스탄불, 하노이행)을 배정해야 해. 위성 1173, 1298, 1373가 고장 났어. 이스탄불 세션을 최우선으로 받아 줘. 런던 지상국 안테나가 강우 때문에 3개만 쓸 수 있어. 북대서양 쪽이 지금 핫스팟이야. 꼭 필요할 때만 지나가. 이 조건으로 라우팅해 줘.",
+  "truth": {
+   "failed_satellites": [
+    1173,
+    1298,
+    1373
+   ],
+   "avoid_regions": [],
+   "hotspot_regions": [
+    "north_atlantic"
+   ],
+   "via": {},
+   "antennas": {
+    "london": 3
+   },
+   "max_new_links": null,
+   "min_admitted": {},
+   "priority": [
+    "istanbul"
+   ],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 28,
+  "t0": 2451.02818141257,
+  "antennas": 2,
+  "capacity": 1,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "hotspot",
+   "region"
+  ],
+  "text": "지금 뉴욕에서 런던, 이스탄불, 하노이로 가는 세션 요청이 들어와 있어. 북대서양 상공은 트래픽이 몰려서 혼잡하니까 가능하면 피해 줘. 규제 때문에 인도양 상공으로는 절대 보내면 안 돼. 반영해서 배정해 줘.",
+  "truth": {
+   "failed_satellites": [],
+   "avoid_regions": [
+    "indian_ocean"
+   ],
+   "hotspot_regions": [
+    "north_atlantic"
+   ],
+   "via": {},
+   "antennas": {},
+   "max_new_links": null,
+   "min_admitted": {},
+   "priority": [],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ },
+ {
+  "id": 29,
+  "t0": 2737.97782216331,
+  "antennas": 4,
+  "capacity": 1,
+  "per_destination": 4,
+  "duration_s": 60.0,
+  "categories": [
+   "ground",
+   "region"
+  ],
+  "text": "새 세션 요청 묶음이 들어왔어. 이스탄불 쪽 안테나 일부가 다운돼서 2개만 남았어. 이스탄불행 세션은 지중해 상공을 반드시 거쳐서 보내야 해. 반영해서 배정해 줘.",
+  "truth": {
+   "failed_satellites": [],
+   "avoid_regions": [],
+   "hotspot_regions": [],
+   "via": {
+    "istanbul": "mediterranean"
+   },
+   "antennas": {
+    "istanbul": 2
+   },
+   "max_new_links": null,
+   "min_admitted": {},
+   "priority": [],
+   "objective": [
+    "admitted",
+    "hotspot",
+    "new_links",
+    "hops"
+   ]
+  }
+ }
+]
