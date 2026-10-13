@@ -33,10 +33,11 @@ from multisession.conditions import satellite_latlon  # noqa: E402
 REQUESTS = ROOT / "results_paper/paper_artifacts/evaluation_requests.csv"
 
 
-def subset_requests():
+def subset_requests(split: str = "eval"):
+    """eval: arrival-time indices 10, 30, ..., 230 (180 requests). dev: indices 0, 20, ..., 220 (disjoint, for prompt work)."""
     rows = list(csv.DictReader(open(REQUESTS, newline="")))
     times = np.sort(np.unique([float(r["request_time_s"]) for r in rows]))
-    picked = set(times[10::20].round(6))
+    picked = set(times[(10 if split == "eval" else 0)::20].round(6))
     return rows, [r for r in rows if round(float(r["request_time_s"]), 6) in picked]
 
 
@@ -64,7 +65,9 @@ def main():
     ap.add_argument("--model")
     ap.add_argument("--operator-text", default="")
     ap.add_argument("--hops", type=int, default=1)
+    ap.add_argument("--split", choices=["eval", "dev"], default="eval")
     ap.add_argument("--limit", type=int)
+    ap.add_argument("--every", type=int, default=1, help="take every k-th request of the subset (dev runs)")
     ap.add_argument("--out", type=Path, required=True)
     args = ap.parse_args()
     if args.mock:
@@ -72,13 +75,13 @@ def main():
     else:
         from multisession.agent.llm import ChatModel
         model = ChatModel(args.provider, args.model, max_tokens=1024)
-    all_rows, subset = subset_requests()
+    all_rows, subset = subset_requests(args.split)
     con, env = build_environment(all_rows)
     planner = LLMPlanner(env.planner, model, lambda t: satellite_latlon(con, t), args.operator_text, args.hops)
     env.planner = planner
     args.out.mkdir(parents=True, exist_ok=True)
     rows = []
-    for spec in subset[: args.limit]:
+    for spec in subset[:: args.every][: args.limit]:
         planner.request_id = int(spec["request_id"])
         request = SessionRequest(spec["source"], spec["destination"], float(spec["request_time_s"]), float(spec["duration_s"]))
         result = env.run("llm", request)

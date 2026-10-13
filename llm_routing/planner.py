@@ -16,11 +16,16 @@ from typing import Dict, List, Optional
 from leo_session.routing import Route, RoutePlanner
 from leo_session.topology import canonical_edge
 
-from .route_edit import LEGEND, describe, neighbourhood, risky_links, to_route
+from .route_edit import LEGEND, describe, hop_table, neighbourhood, risky_links, to_route
 
 SYSTEM = ("You route sessions in a LEO satellite network with optical inter-satellite links. A session must stay "
-          "connected for its whole holding time; links whose contact ends earlier will break it. Edit the given "
-          "Dijkstra route into the route you recommend. Answer with JSON only: "
+          "connected for its whole holding time; a link whose contact ends earlier breaks it. You get the Dijkstra "
+          "route and the satellites around it. Return the route you recommend: keep the Dijkstra route unchanged "
+          "if it is fine, otherwise replace only the segments that need it. Rules: start at the ingress and end at "
+          "the egress satellite; each next satellite must be listed as a link on the previous satellite's line; no "
+          "satellite twice; never enter and leave a satellite through inter-plane (A or N) links. "
+          "Before answering, write 'Check:' and list each hop of your route as u->v kind remaining_s copied from "
+          "the satellite list, so every hop is verified. Then give the answer as JSON: "
           '{"route": [satellite ids from ingress to egress], "reason": "one sentence"}')
 
 
@@ -45,15 +50,16 @@ class LLMPlanner(RoutePlanner):
             + f"Session {source_station} -> {destination_station}. Decision time {time_s:.0f} s. The route must stay "
             f"connected for the next {required_s:.0f} s (add 20 s if it switches any link on).\n"
             f"Ingress satellite {dijkstra.ingress}, egress satellite {dijkstra.egress}.\n"
-            f"Dijkstra route: {list(dijkstra.satellites)}\n\n{LEGEND}\n{describe(graph, nodes, positions, self.latlon_of(time_s))}"
+            f"Dijkstra route: {list(dijkstra.satellites)}\n"
+            f"Dijkstra hops (link kind, remaining_s): {hop_table(graph, dijkstra.satellites)}\n\n"
+            f"{LEGEND}\n{describe(graph, nodes, positions, self.latlon_of(time_s) if self.operator_text else None)}"
         )
         tick = time.perf_counter()
         error, usage, text, route = "", {}, "", None
         try:
             msg, usage = self.model.chat([{"role": "system", "content": SYSTEM}, {"role": "user", "content": prompt}])
             text = msg["content"]
-            match = re.search(r"\{.*\}", text, re.S)
-            proposal = json.loads(match.group(0))["route"] if match else None
+            proposal = _last_route(text)
             if proposal is None:
                 error = "no JSON route in the answer"
             else:
@@ -70,3 +76,18 @@ class LLMPlanner(RoutePlanner):
             **{k: usage.get(k, 0) for k in ("prompt_tokens", "completion_tokens")},
         })
         return chosen
+
+
+def _last_route(text: str):
+    """The route list of the last JSON object that has one (reasoning may precede it)."""
+    for start in reversed([i for i, ch in enumerate(text) if ch == "{"]):
+        end = text.find("}", start)
+        while end != -1:
+            try:
+                data = json.loads(text[start:end + 1])
+                if isinstance(data, dict) and isinstance(data.get("route"), list):
+                    return data["route"]
+                break
+            except json.JSONDecodeError:
+                end = text.find("}", end + 1)
+    return None

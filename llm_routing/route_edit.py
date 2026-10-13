@@ -25,7 +25,8 @@ from leo_session.topology import canonical_edge
 Graph = Dict[int, Sequence[Tuple[int, bool, bool, float]]]  # u -> (v, is_dynamic, is_active, remaining_s)
 
 LEGEND = (
-    "Each line: satellite | lat,lon | links to other listed satellites as id:kind:remaining_s:km. "
+    "Each line: satellite | links to other listed satellites as id:kind:remaining_s:km "
+    "(with operator conditions the line also gives the satellite's lat,lon). "
     "kind P = persistent in-plane link (never expires), A = active inter-plane link (usable now), "
     "N = inter-plane link that must be switched on (20 s setup; the route then starts 20 s later). "
     "remaining_s = seconds until the link's contact ends. A satellite has one inter-plane terminal, "
@@ -42,7 +43,7 @@ def neighbourhood(graph: Graph, route: Sequence[int], hops: int = 1) -> List[int
     return sorted(nodes)
 
 
-def describe(graph: Graph, nodes: Sequence[int], positions: np.ndarray, latlon: np.ndarray) -> str:
+def describe(graph: Graph, nodes: Sequence[int], positions: np.ndarray, latlon: Optional[np.ndarray] = None) -> str:
     keep = set(nodes)
     lines = []
     for u in nodes:
@@ -53,8 +54,19 @@ def describe(graph: Graph, nodes: Sequence[int], positions: np.ndarray, latlon: 
             kind = "P" if not dynamic else ("A" if active else "N")
             rem = "inf" if math.isinf(remaining) else str(int(remaining))
             links.append(f"{v}:{kind}:{rem}:{int(np.linalg.norm(positions[u] - positions[v]))}")
-        lines.append(f"{u} | {latlon[u][0]:.0f},{latlon[u][1]:.0f} | " + " ".join(links))
+        where = f" | {latlon[u][0]:.0f},{latlon[u][1]:.0f}" if latlon is not None else ""
+        lines.append(f"{u}{where} | " + " ".join(links))
     return "\n".join(lines)
+
+
+def hop_table(graph: Graph, satellites: Sequence[int]) -> str:
+    """The Dijkstra route hop by hop with link kind and remaining contact time."""
+    rows = []
+    for u, v in zip(satellites, satellites[1:]):
+        d, a, r = next(((d, a, r) for n, d, a, r in graph.get(u, ()) if n == v))
+        kind = "P" if not d else ("A" if a else "N")
+        rows.append(f"{u}->{v} {kind} {'inf' if math.isinf(r) else int(r)}")
+    return ", ".join(rows)
 
 
 def risky_links(planner, graph: Graph, satellites: Sequence[int], required_s: float) -> List[str]:
