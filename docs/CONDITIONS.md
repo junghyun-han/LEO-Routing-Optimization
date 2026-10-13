@@ -34,10 +34,11 @@ LLM 라우팅 에이전트가 텍스트로 받는 조건이다. 실제 위성통
    (Gharanjik et al., [arXiv 1305.1434](https://arxiv.org/abs/1305.1434)). 저앙각·강우 감쇠로
    비정지궤도 Ka 링크에 감쇠 대책이 필수다
    ([URSI GASS 2021](https://www.ursi.org/proceedings/procGA21/papers/URSIGASS2021-Fr-F07-PM3-1.pdf)).
-5. **재구성 제한.** 레이저 위성 간 링크 설정 지연과 그 영향(Bhattacharjee et al., *Laser
-   Inter-Satellite Link Setup Delay: Quantification, Impact, and Tolerable Value*, 2023), 공간
-   포착과 위상 고정을 포함해 20초 이내 통신 시작(Smutny et al., Proc. SPIE 7199,
-   DOI 10.1117/12.812209). WCNC 모델의 20초가 이 근거다.
+5. **재구성 제한.** 광 위성 간 링크를 새로 잡으려면 PAT(pointing, acquisition, tracking) 지연이
+   든다(Gerard, Fraire, Cespedes, *Modeling pointing, acquisition, and tracking delays in free-space
+   optical satellite networks*, IEEE WiSEE 2025; Bhattacharjee et al., *Laser inter-satellite link setup
+   delay: Quantification, impact, and tolerable value*, IEEE WCNC 2023). WCNC 2027 투고 논문의 20초
+   설정 지연도 이 근거를 따른다.
 6. **우선 트래픽.** 최소 홉·최소 지연 라우팅이 핫스팟을 혼잡하게 하고 고우선 호가 저우선
    트래픽 경로에 실린다는 지적과 우선순위 부하 분산(Jain et al.,
    [WUSTL](https://research.engineering.wustl.edu/~jain/papers/ftp/aero04.pdf)), 지연 기준과

@@ -1,4 +1,4 @@
-# LEO 세션 라우팅 환경과 GCN-PPO 기술 정리 (2026-09-05 기준)
+# LEO 세션 라우팅 환경과 PPO-GCN 기술 정리 (2026-09-05 기준)
 
 이 문서가 현재 v3의 최우선 기준 문서다. 과거 문서와 내용이 충돌하면 이 문서,
 실행된 checkpoint의 `training_metadata.json`, frozen-test 원본 `sessions.csv`, 현재
